@@ -9,8 +9,9 @@ public:
     Camera();
     ~Camera();
     bool Initialize(int w, int h);
-    void Update(unsigned int dt);
+    void Update(glm::mat4 model, glm::vec3, float);
     void setSpeed(glm::vec3 spd) { m_speed = spd; };
+    void setRotation(float rot) { angle = rot; }
     void setAngles(float angX, float angY) { xpos = angX; ypos = angY; };
     void setView(glm::mat4 vw) { view = vw; };
     glm::mat4 GetProjection();
@@ -26,6 +27,7 @@ private:
     double z = -16.0;
     glm::mat4 projection;
     glm::mat4 view;
+    float angle;
 };
 
 #endif /* CAMERA_H */

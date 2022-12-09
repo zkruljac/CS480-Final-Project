@@ -26,6 +26,7 @@ class Graphics
     void Render();
 
     Camera* getCamera() { return m_camera; }
+    Mesh* getShip() { return m_mesh; }
 
   private:
     std::string ErrorString(GLenum error);
@@ -36,6 +37,7 @@ class Graphics
         glm::mat4& tmat, glm::mat4& rmat, glm::mat4& smat);
 
     stack<glm::mat4> modelStack;
+    glm::mat4 m_ship;
 
     Camera *m_camera;
     Shader *m_shader;
@@ -192,6 +194,12 @@ class Graphics
     glm::mat4 rmatC;
     glm::mat4 smatC;
     glm::vec3 rotVectorC;
+
+    glm::vec3 scale;
+    glm::quat rotation;
+    glm::vec3 skew;
+    glm::vec3 translation;
+    glm::vec4 perspective;
 
 };
 

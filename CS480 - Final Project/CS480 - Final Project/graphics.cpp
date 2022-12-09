@@ -75,6 +75,10 @@ bool Graphics::Initialize(int width, int height)
 		printf("Some shader attribs not located!\n");
 	}
 
+	tmatM = glm::translate(glm::mat4(1.0f), glm::vec3(0, -10, 0));
+	rmatM = glm::rotate(glm::mat4(1.0f), 1 * 3.14f, glm::vec3(0, 1.0f, .0f));
+	smatM = glm::scale(glm::vec3(.1, .1, .1));
+
 	// Starship
 	m_mesh = new Mesh(glm::vec3(2.0f, 3.0f, -5.0f), "Planetary Textures\\SpaceShip-1.obj", "Planetary Textures\\SpaceShip-1.png");
 
@@ -119,70 +123,71 @@ void Graphics::HierarchicalUpdate2(double dt) {
 
 	// Update your animation for the solar system here.
 
+	speedM = { 0.0, 0.0, 0.0 };
+	distM = { 0., 0., 0. };
+	rotSpeedM = { 0.5f, 0.0f, 0.5f };
+	scaleM = { 5.f, 5.f, 5.f };
+	rotVectorM = glm::vec3(.0, 1.0, 0.0);
+
+
 	//planet parameters
 	speedS = { 0.0, 0.0, 0.0 };
 	distS = { 0., 0., 0. };
-	rotSpeedS = { 0.5f, 0.0f, 0.5f };
+	rotSpeedS = { 0.1f, 0.0f, 0.1f };
 	scaleS = { 5.f, 5.f, 5.f };
 	rotVectorS = glm::vec3(.0, 1.0, 0.0);
 
-	speedP = { -0.1, 0.0, -0.1 };
+	speedP = { -0.08, 0.0, -0.08 };
 	distP = { 35., 0., 35. };
-	rotSpeedP = { 1.5f, 0.0f, 1.5f };
+	rotSpeedP = { 1.0f, 0.0f, 1.0f };
 	scaleP = { 1.f, 1.f, 1.f };
 	rotVectorP = glm::vec3(.3, 1.0, 0.0);
 
-	speedP1 = { -0.8, -0.8, -0.8 };
+	speedP1 = { -0.4, -0.4, -0.4 };
 	distP1 = { 6., 2., 6. };
-	rotSpeedP1 = { .5f, 0.0f, 0.5f };
+	rotSpeedP1 = { .25f, 0.0f, 0.25f };
 	scaleP1 = { .5f, .5f, .5f };
 	rotVectorP1 = glm::vec3(.5, 1.0, 0.0);
 
-	speedM = { -1.0, -1.0, 0.0 };
-	distM = { 7.0, 7.0, 0.0 };
-	rotSpeedM = { -1.f, -1.0f, 0.0f };
-	scaleM = { .05f, .05f, .05f };
-	rotVectorM = glm::vec3(0.0, 0.0, 1.0);
-
-	speedMe = { -.3, 0.0, -.3 };
+	speedMe = { -.2, 0.0, -.2 };
 	distMe = { 10.0, 0.0, 10.0 };
-	rotSpeedMe = { 1.f, 0.0f, 1.0f };
+	rotSpeedMe = { .08f, 0.0f, .08f };
 	scaleMe = { .6f, .6f, .6f };
 	rotVectorMe = glm::vec3(0.0, 1.0, 0.0);
 
-	speedV = { -.2, 0.0, -.2 };
+	speedV = { -.12, 0.0, -.12 };
 	distV = { 20.0, 0.0, 20.0 };
 	rotSpeedV = { -0.5f, -0.f, -0.5f };
 	scaleV = { .9f, .9f, .9f };
 	rotVectorV = glm::vec3(0.0, 1.0, 0.0);
 
-	speedMa = { -.05, 0.0, -.05 };
+	speedMa = { -.04, 0.0, -.04 };
 	distMa = { 40.0, 0.0, 40.0 };
-	rotSpeedMa = { 1.2f, 0.f, 1.2f };
+	rotSpeedMa = { 1.0f, 0.f, 1.0f };
 	scaleMa = { .7f, .7f, .7f };
 	rotVectorMa = glm::vec3(0.0, 1.0, 0.0);
 
 	speedJ = { -.02, 0.0, -.02 };
 	distJ = { 70.0, 0.0, 70.0 };
-	rotSpeedJ = { .5f, .0f, .5f };
+	rotSpeedJ = { .2f, .0f, .2f };
 	scaleJ = { 3.f, 3.f, 3.f };
 	rotVectorJ = glm::vec3(0.0, 1.0, 0.0);
 
 	speedSa = { -.01, 0.0, -.01 };
 	distSa = { 120.0, 0.0, 120.0 };
-	rotSpeedSa = { .4f, .4f, .4f };
+	rotSpeedSa = { .2f, .2f, .2f };
 	scaleSa = { 2.5f, 2.5f, 2.5f };
 	rotVectorSa = glm::vec3(0.0, 1.0, 0.1);
 
 	speedU = { -.005, 0.0, -.005 };
 	distU = { 170.0, 0.0, 170.0 };
-	rotSpeedU = { .7f, .7f, .7f };
+	rotSpeedU = { .2f, .2f, .2f };
 	scaleU = { 1.5f, 1.5f, 1.5f };
 	rotVectorU = glm::vec3(1.0, 0.1, 0.0);
 
 	speedN = { -.002, 0.0, -.002 };
 	distN = { 200.0, 0.0, 200.0 };
-	rotSpeedN = { .7f, .7f, .7f };
+	rotSpeedN = { .3f, .3f, .3f };
 	scaleN = { 1.4f, 1.4f, 1.4f };
 	rotVectorN = glm::vec3(.05, 1.0, 0.0);
 
@@ -194,9 +199,6 @@ void Graphics::HierarchicalUpdate2(double dt) {
 
 	ComputeTransforms(dt, speedP1, distP1, rotSpeedP1, rotVectorP1, scaleP1, tmatP1, rmatP1, smatP1);
 	m_luna->Update(tmatP * tmatP1 * rmatP1 * smatP1);
-
-	ComputeTransforms(dt, speedM, distM, rotSpeedM, rotVectorM, scaleM, tmatM, rmatM, smatM);
-	m_mesh->Update(tmatM * rmatM * smatM);
 
 	ComputeTransforms(dt, speedMe, distMe, rotSpeedMe, rotVectorMe, scaleMe, tmatMe, rmatMe, smatMe);
 	m_mercury->Update(tmatMe * rmatMe * smatMe);
@@ -221,7 +223,10 @@ void Graphics::HierarchicalUpdate2(double dt) {
 
 	//modelStack.push();
 
-	//m_camera->Update(dt);
+	m_mesh->Update(dt);
+	m_ship = m_mesh->GetModel();
+	glm::decompose(m_ship, scale, rotation, translation, skew, perspective);
+	m_camera->Update(m_ship, translation, rotation.y);
 }
 
 

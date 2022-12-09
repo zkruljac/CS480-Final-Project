@@ -13,9 +13,12 @@ public:
     Mesh(glm::vec3 pivot, const char* fname, const char* tname);
 
     ~Mesh();
-    void Update(glm::mat4 model);
+    void Update(unsigned int dt);
     void Render(GLint posAttrib, GLint colAttrib);
     void Render(GLint positionAttribLoc, GLint colorAttribLoc, GLint tcAttribLoc, GLint hasTex);
+
+    void setSpeed(glm::vec3 spd) { m_speed = spd; };
+    void setRotation(float rot) { angle = rot; }
 
     glm::mat4 GetModel();
 
@@ -34,6 +37,7 @@ private:
     std::vector<unsigned int> Indices;
     GLuint VB;
     GLuint IB;
+    glm::vec3 m_speed = glm::vec3(0., 0., 0.);
 
     Texture* m_texture;
 

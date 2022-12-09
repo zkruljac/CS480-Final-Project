@@ -56,6 +56,9 @@ Mesh::Mesh(glm::vec3 pivot, const char* fname, const char* tname)
 		hasTex = true;
 	else
 		hasTex = false;
+
+	model *= glm::translate(glm::mat4(1.0f), glm::vec3(0, -3, -10));
+	model *= glm::scale(glm::vec3(.005, .005, .005));
 }
 
 
@@ -65,9 +68,11 @@ Mesh::~Mesh()
 	Indices.clear();
 }
 
-void Mesh::Update(glm::mat4 inmodel)
+void Mesh::Update(unsigned int dt)
 {
-	model = inmodel;
+	//model = inmodel;
+	model = glm::translate(model, m_speed);
+	model *= glm::rotate(glm::mat4(1.0f), angle, glm::vec3(0, 1.0f, .0f));
 
 }
 
