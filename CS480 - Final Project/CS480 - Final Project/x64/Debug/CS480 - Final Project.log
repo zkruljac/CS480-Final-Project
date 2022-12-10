@@ -1,13 +1,21 @@
-﻿  graphics.cpp
-C:\Users\kknot\source\repos\CS480 - Final Project\CS480 - Final Project\graphics.cpp(109,31): warning C4305: 'initializing': truncation from 'double' to '_Ty'
-          with
-          [
-              _Ty=float
-          ]
-C:\Users\kknot\source\repos\CS480 - Final Project\CS480 - Final Project\graphics.cpp(115,31): warning C4305: 'initializing': truncation from 'double' to '_Ty'
-          with
-          [
-              _Ty=float
-          ]
-C:\Users\kknot\source\repos\CS480 - Final Project\CS480 - Final Project\graphics.cpp(159,33): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
-  CS480 - Final Project.vcxproj -> C:\Users\kknot\source\repos\CS480 - Final Project\x64\Debug\CS480 - Final Project.exe
+﻿  camera.cpp
+D:\School\CS480\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics_headers.h(5,10): fatal  error C1083: Cannot open include file: 'assimp/Importer.hpp': No such file or directory
+  engine.cpp
+D:\School\CS480\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\window.h(4,10): fatal  error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  graphics.cpp
+D:\School\CS480\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics_headers.h(5,10): fatal  error C1083: Cannot open include file: 'assimp/Importer.hpp': No such file or directory
+  main.cpp
+D:\School\CS480\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\window.h(4,10): fatal  error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  mesh.cpp
+D:\School\CS480\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics_headers.h(5,10): fatal  error C1083: Cannot open include file: 'assimp/Importer.hpp': No such file or directory
+  object.cpp
+D:\School\CS480\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics_headers.h(5,10): fatal  error C1083: Cannot open include file: 'assimp/Importer.hpp': No such file or directory
+  sphere.cpp
+D:\School\CS480\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics_headers.h(5,10): fatal  error C1083: Cannot open include file: 'assimp/Importer.hpp': No such file or directory
+  shader.cpp
+D:\School\CS480\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics_headers.h(5,10): fatal  error C1083: Cannot open include file: 'assimp/Importer.hpp': No such file or directory
+  Texture.cpp
+D:\School\CS480\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics_headers.h(5,10): fatal  error C1083: Cannot open include file: 'assimp/Importer.hpp': No such file or directory
+  window.cpp
+D:\School\CS480\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\window.h(4,10): fatal  error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  Generating Code...
