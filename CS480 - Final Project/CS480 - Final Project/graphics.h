@@ -50,6 +50,7 @@ class Graphics
     GLint m_tcAttrib;
     GLint m_hasTexture;
 
+    Sphere* m_skybox;
 
     Sphere* m_sun;
     Sphere* m_earth;
@@ -86,6 +87,15 @@ class Graphics
     glm::mat4 rmatS;
     glm::mat4 smatS;
     glm::vec3 rotVectorS;
+
+    std::vector<float> speedSB;
+    std::vector<float> distSB;
+    std::vector<float> rotSpeedSB;
+    std::vector<float> scaleSB;
+    glm::mat4 tmatSB;
+    glm::mat4 rmatSB;
+    glm::mat4 smatSB;
+    glm::vec3 rotVectorSB;
 
     std::vector<float> speedP;
     std::vector<float> distP;

@@ -20,6 +20,8 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtx/rotate_vector.hpp>
 #include <glm/gtx/matrix_decompose.hpp>
+#include <glm/gtx/color_space.hpp>
+#include <glm/gtx/color_encoding.hpp>
 
 #define INVALID_UNIFORM_LOCATION 0x7fffffff
 

@@ -82,6 +82,9 @@ bool Graphics::Initialize(int width, int height)
 	// Starship
 	m_mesh = new Mesh(glm::vec3(2.0f, 3.0f, -5.0f), "Planetary Textures\\SpaceShip-1.obj", "Planetary Textures\\SpaceShip-1.png");
 
+	// Skybox
+	m_skybox = new Sphere(64, "Planetary Textures\\2k_stars_milky_way.jpg");
+
 	// The Sun
 	m_sun = new Sphere(64, "Planetary Textures\\2k_sun.jpg");
 
@@ -123,76 +126,87 @@ void Graphics::HierarchicalUpdate2(double dt) {
 
 	// Update your animation for the solar system here.
 
+	//Ship
 	speedM = { 0.0, 0.0, 0.0 };
 	distM = { 0., 0., 0. };
 	rotSpeedM = { 0.5f, 0.0f, 0.5f };
-	scaleM = { 5.f, 5.f, 5.f };
+	scaleM = { 5.0f, 5.0f, 5.0f };
 	rotVectorM = glm::vec3(.0, 1.0, 0.0);
+
+	//Skybox
+	speedSB = { 0.0, 0.0, 0.0 };
+	distSB = { 0., 0., 0. };
+	rotSpeedSB = { 0.001f, 0.0f, 0.001f };
+	scaleSB = { 1000.f, 1000.f, 1000.f };
+	rotVectorSB = glm::vec3(.0, 1.0, 0.0);
 
 
 	//planet parameters
 	speedS = { 0.0, 0.0, 0.0 };
 	distS = { 0., 0., 0. };
-	rotSpeedS = { 0.1f, 0.0f, 0.1f };
-	scaleS = { 5.f, 5.f, 5.f };
+	rotSpeedS = { 0.05f, 0.0f, 0.05 };
+	scaleS = { 8.f, 8.f, 8.f };
 	rotVectorS = glm::vec3(.0, 1.0, 0.0);
 
-	speedP = { -0.08, 0.0, -0.08 };
-	distP = { 35., 0., 35. };
-	rotSpeedP = { 1.0f, 0.0f, 1.0f };
-	scaleP = { 1.f, 1.f, 1.f };
+	speedP = { -0.04, 0.0, -0.04 };
+	distP = { 70., 0., 70. };
+	rotSpeedP = { 0.5f, 0.0f, 0.5f };
+	scaleP = { 2.f, 2.f, 2.f };
 	rotVectorP = glm::vec3(.3, 1.0, 0.0);
 
-	speedP1 = { -0.4, -0.4, -0.4 };
-	distP1 = { 6., 2., 6. };
-	rotSpeedP1 = { .25f, 0.0f, 0.25f };
-	scaleP1 = { .5f, .5f, .5f };
+	speedP1 = { -0.2, -0.2, -0.2 };
+	distP1 = { 12., 4., 12. };
+	rotSpeedP1 = { .125f, 0.0f, 0.125f };
+	scaleP1 = { 1.0f, 1.0f, 1.0f };
 	rotVectorP1 = glm::vec3(.5, 1.0, 0.0);
 
-	speedMe = { -.2, 0.0, -.2 };
-	distMe = { 10.0, 0.0, 10.0 };
-	rotSpeedMe = { .08f, 0.0f, .08f };
-	scaleMe = { .6f, .6f, .6f };
+	speedMe = { -.1, 0.0, -.1 };
+	distMe = { 20.0, 0.0, 20.0 };
+	rotSpeedMe = { .04f, 0.0f, .04f };
+	scaleMe = { 1.2f, 1.2f, 1.2f };
 	rotVectorMe = glm::vec3(0.0, 1.0, 0.0);
 
-	speedV = { -.12, 0.0, -.12 };
-	distV = { 20.0, 0.0, 20.0 };
-	rotSpeedV = { -0.5f, -0.f, -0.5f };
-	scaleV = { .9f, .9f, .9f };
+	speedV = { -.06, 0.0, -.06 };
+	distV = { 40.0, 0.0, 40.0 };
+	rotSpeedV = { -0.25f, -0.f, -0.25f };
+	scaleV = { 1.8f, 1.8f, 1.8f };
 	rotVectorV = glm::vec3(0.0, 1.0, 0.0);
 
-	speedMa = { -.04, 0.0, -.04 };
-	distMa = { 40.0, 0.0, 40.0 };
-	rotSpeedMa = { 1.0f, 0.f, 1.0f };
-	scaleMa = { .7f, .7f, .7f };
+	speedMa = { -.02, 0.0, -.02 };
+	distMa = { 80.0, 0.0, 80.0 };
+	rotSpeedMa = { 0.5f, 0.f, 0.5f };
+	scaleMa = { 1.4f, 1.4f, 1.4f };
 	rotVectorMa = glm::vec3(0.0, 1.0, 0.0);
 
-	speedJ = { -.02, 0.0, -.02 };
-	distJ = { 70.0, 0.0, 70.0 };
-	rotSpeedJ = { .2f, .0f, .2f };
-	scaleJ = { 3.f, 3.f, 3.f };
+	speedJ = { -.01, 0.0, -.01 };
+	distJ = { 140.0, 0.0, 140.0 };
+	rotSpeedJ = { .1f, .0f, .1f };
+	scaleJ = { 6.f, 6.f, 6.f };
 	rotVectorJ = glm::vec3(0.0, 1.0, 0.0);
 
-	speedSa = { -.01, 0.0, -.01 };
-	distSa = { 120.0, 0.0, 120.0 };
+	speedSa = { -.005, 0.0, -.005 };
+	distSa = { 240.0, 0.0, 240.0 };
 	rotSpeedSa = { .2f, .2f, .2f };
-	scaleSa = { 2.5f, 2.5f, 2.5f };
+	scaleSa = { 5.0f, 5.0f, 5.0f };
 	rotVectorSa = glm::vec3(0.0, 1.0, 0.1);
 
-	speedU = { -.005, 0.0, -.005 };
-	distU = { 170.0, 0.0, 170.0 };
-	rotSpeedU = { .2f, .2f, .2f };
-	scaleU = { 1.5f, 1.5f, 1.5f };
+	speedU = { -.0025, 0.0, -.0025 };
+	distU = { 320.0, 0.0, 320.0 };
+	rotSpeedU = { .1f, .1f, .1f };
+	scaleU = { 3.0f, 3.0f, 3.0f };
 	rotVectorU = glm::vec3(1.0, 0.1, 0.0);
 
-	speedN = { -.002, 0.0, -.002 };
-	distN = { 200.0, 0.0, 200.0 };
-	rotSpeedN = { .3f, .3f, .3f };
-	scaleN = { 1.4f, 1.4f, 1.4f };
+	speedN = { -.001, 0.0, -.001 };
+	distN = { 380.0, 0.0, 380.0 };
+	rotSpeedN = { .1f, .1f, .1f };
+	scaleN = { 2.8f, 2.8f, 2.8f };
 	rotVectorN = glm::vec3(.05, 1.0, 0.0);
 
 	ComputeTransforms(dt, speedS, distS, rotSpeedS, rotVectorS, scaleS, tmatS, rmatS, smatS);
 	m_sun->Update(tmatS * rmatS * smatS);
+
+	ComputeTransforms(dt, speedSB, distSB, rotSpeedSB, rotVectorSB, scaleSB, tmatSB, rmatSB, smatSB);
+	m_skybox->Update(tmatSB* rmatSB * smatSB);
 
 	ComputeTransforms(dt, speedP, distP, rotSpeedP, rotVectorP, scaleP, tmatP, rmatP, smatP);
 	m_earth->Update(tmatP * rmatP * smatP);
@@ -293,6 +307,21 @@ void Graphics::Render()
 			}
 			glUniform1i(sampler, 0);
 			m_sun->Render(m_positionAttrib, m_colorAttrib, m_tcAttrib, m_hasTexture);
+		}
+	}
+
+	if (m_skybox != NULL) {
+		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_skybox->GetModel()));
+		if (m_skybox->hasTex) {
+			glActiveTexture(GL_TEXTURE0);
+			glBindTexture(GL_TEXTURE_2D, m_skybox->getTextureID());
+			GLuint sampler = m_shader->GetUniformLocation("sp");
+			if (sampler == INVALID_UNIFORM_LOCATION)
+			{
+				printf("Sampler Not found not found\n");
+			}
+			glUniform1i(sampler, 0);
+			m_skybox->Render(m_positionAttrib, m_colorAttrib, m_tcAttrib, m_hasTexture);
 		}
 	}
 
@@ -440,6 +469,8 @@ void Graphics::Render()
 		string val = ErrorString(error);
 		std::cout << "Error initializing OpenGL! " << error << ", " << val << std::endl;
 	}
+
+	//GLint globalAmbLoc = glGetUniformLocation(m_shader->GetShaderProgram(), "GlobalAmbient");
 }
 
 
@@ -533,4 +564,6 @@ std::string Graphics::ErrorString(GLenum error)
 		return "None";
 	}
 }
+
+
 
