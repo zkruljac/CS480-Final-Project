@@ -48,7 +48,7 @@ void Camera::Update(glm::mat4 model, glm::vec3 translation, float rotation, glm:
 		angle += rotation;
 		view = glm::lookAt(glm::vec3(cos(-speed[0] * angle) * 10 + Ptranslation.x, sin(-speed[2] * translation.z) * 10 + Ptranslation.y, sin(-speed[2] * angle) * 10 + Ptranslation.z), glm::vec3(0.0, 0.0, 0.0) + Ptranslation, glm::vec3(0.0, 1.0, 0.0));
 	}
-	if (viewState == 0)
+	else
 	{
 		angle += rotation;
 		view = glm::lookAt(glm::vec3(cos(-speed[0] * angle) * dist[0] + translation.x, 0.2 + translation.y, sin(-speed[2] * angle) * dist[2] + translation.z), glm::vec3(0.0, 0.2, 0.0) + translation, glm::vec3(0.0, 1.0, 0.0));
