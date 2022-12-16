@@ -59,6 +59,7 @@ Mesh::Mesh(glm::vec3 pivot, const char* fname, const char* tname)
 
 	model *= glm::translate(glm::mat4(1.0f), glm::vec3(0, -3, -10));
 	model *= glm::scale(glm::vec3(.005, .005, .005));
+	model *= glm::rotate(glm::mat4(1.0f), -1.58f, glm::vec3(0, 1.0f, .0f));
 }
 
 

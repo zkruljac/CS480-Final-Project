@@ -18,9 +18,9 @@ bool Camera::Initialize(int w, int h)
 	//  for this project having them static will be fine
 
 	// TO DO: Make the camera to be placed at location (10, 12, -20), point at origin, and the right-handed Y-up coordinate
-	view = glm::lookAt(glm::vec3(1.0, 20.0, -40.0), //Eye Position
-		glm::vec3(0.0, 0.0, 1.0), //Focus point
-		glm::vec3(0.0, 1.0, 0.0)); //Positive Y is up
+	//view = glm::lookAt(glm::vec3(1.0, 20.0, -40.0), //Eye Position
+		//glm::vec3(0.0, 0.0, 1.0), //Focus point
+		//glm::vec3(0.0, 1.0, 0.0)); //Positive Y is up
 
 	projection = glm::perspective(glm::radians(45.f), //the FoV typically 90 degrees is good which is what this is set to
 		float(w) / float(h), //Aspect Ratio, so Circles stay Circular
@@ -37,9 +37,12 @@ bool Camera::Initialize(int w, int h)
 
 void Camera::Update(glm::mat4 model, glm::vec3 translation, float rotation)
 {
-	view = glm::lookAt(glm::vec3(0.0, 0.2, -1.0) + translation, glm::vec3(0.0, 0.2, 0.0) + translation, glm::vec3(0.0, 1.0, 0.0));
+	angle += rotation;
+	//view = glm::lookAt(glm::vec3(0.0, 0.2, -1.0) + translation, glm::vec3(0.0, 0.2, 0.0) + translation, glm::vec3(0.0, 1.0, 0.0));
 	//view *= glm::rotate(glm::mat4(1.f), rotation, glm::vec3(0.0, 1.0, 0.0));
-	//view *= glm::translate(view, glm::vec3(0,-10,0));
+	//view = glm::translate(view, glm::vec3(cos(rotation),0, -cos(rotation)));
+	//view = glm::translate(view, glm::vec3(cos(speed[0] * rotation) * dist[0], sin(speed[1] * rotation) * dist[1], sin(speed[2] * rotation) * dist[2]));
+	view = glm::lookAt(glm::vec3(cos(-speed[0] * angle) * dist[0] + translation[0], 0.2 + translation[1], sin(-speed[2] * angle) * dist[2] + translation[2]), glm::vec3(0.0, 0.2, 0.0) + translation, glm::vec3(0.0, 1.0, 0.0));
 }
 
 glm::mat4 Camera::GetProjection()

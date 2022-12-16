@@ -18,6 +18,10 @@ public:
     glm::mat4 GetView();
     float xpos, ypos;
 
+    glm::vec3 speed = { 1.0, 0.0, 1.0 };
+    glm::vec3 dist = { 1.0, 0.0, 1.0 };
+    float angle;
+
 
 private:
 
@@ -27,7 +31,6 @@ private:
     double z = -16.0;
     glm::mat4 projection;
     glm::mat4 view;
-    float angle;
 };
 
 #endif /* CAMERA_H */

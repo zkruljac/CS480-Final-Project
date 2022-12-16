@@ -137,7 +137,7 @@ void Graphics::HierarchicalUpdate2(double dt) {
 	speedSB = { 0.0, 0.0, 0.0 };
 	distSB = { 0., 0., 0. };
 	rotSpeedSB = { 0.001f, 0.0f, 0.001f };
-	scaleSB = { 1000.f, 1000.f, 1000.f };
+	scaleSB = { 2000.f, 2000.f, 2000.f };
 	rotVectorSB = glm::vec3(.0, 1.0, 0.0);
 
 
@@ -149,55 +149,55 @@ void Graphics::HierarchicalUpdate2(double dt) {
 	rotVectorS = glm::vec3(.0, 1.0, 0.0);
 
 	speedP = { -0.04, 0.0, -0.04 };
-	distP = { 70., 0., 70. };
+	distP = { 140., 0., 140. };
 	rotSpeedP = { 0.5f, 0.0f, 0.5f };
 	scaleP = { 2.f, 2.f, 2.f };
 	rotVectorP = glm::vec3(.3, 1.0, 0.0);
 
 	speedP1 = { -0.2, -0.2, -0.2 };
-	distP1 = { 12., 4., 12. };
+	distP1 = { 24., 4., 24. };
 	rotSpeedP1 = { .125f, 0.0f, 0.125f };
 	scaleP1 = { 1.0f, 1.0f, 1.0f };
 	rotVectorP1 = glm::vec3(.5, 1.0, 0.0);
 
 	speedMe = { -.1, 0.0, -.1 };
-	distMe = { 20.0, 0.0, 20.0 };
+	distMe = { 40.0, 0.0, 40.0 };
 	rotSpeedMe = { .04f, 0.0f, .04f };
 	scaleMe = { 1.2f, 1.2f, 1.2f };
 	rotVectorMe = glm::vec3(0.0, 1.0, 0.0);
 
 	speedV = { -.06, 0.0, -.06 };
-	distV = { 40.0, 0.0, 40.0 };
+	distV = { 80.0, 0.0, 80.0 };
 	rotSpeedV = { -0.25f, -0.f, -0.25f };
 	scaleV = { 1.8f, 1.8f, 1.8f };
 	rotVectorV = glm::vec3(0.0, 1.0, 0.0);
 
 	speedMa = { -.02, 0.0, -.02 };
-	distMa = { 80.0, 0.0, 80.0 };
+	distMa = { 180.0, 0.0, 180.0 };
 	rotSpeedMa = { 0.5f, 0.f, 0.5f };
 	scaleMa = { 1.4f, 1.4f, 1.4f };
 	rotVectorMa = glm::vec3(0.0, 1.0, 0.0);
 
 	speedJ = { -.01, 0.0, -.01 };
-	distJ = { 140.0, 0.0, 140.0 };
+	distJ = { 300.0, 0.0, 300.0 };
 	rotSpeedJ = { .1f, .0f, .1f };
 	scaleJ = { 6.f, 6.f, 6.f };
 	rotVectorJ = glm::vec3(0.0, 1.0, 0.0);
 
 	speedSa = { -.005, 0.0, -.005 };
-	distSa = { 240.0, 0.0, 240.0 };
+	distSa = { 400.0, 0.0, 400.0 };
 	rotSpeedSa = { .2f, .2f, .2f };
 	scaleSa = { 5.0f, 5.0f, 5.0f };
 	rotVectorSa = glm::vec3(0.0, 1.0, 0.1);
 
 	speedU = { -.0025, 0.0, -.0025 };
-	distU = { 320.0, 0.0, 320.0 };
+	distU = { 700.0, 0.0, 700.0 };
 	rotSpeedU = { .1f, .1f, .1f };
 	scaleU = { 3.0f, 3.0f, 3.0f };
 	rotVectorU = glm::vec3(1.0, 0.1, 0.0);
 
 	speedN = { -.001, 0.0, -.001 };
-	distN = { 380.0, 0.0, 380.0 };
+	distN = { 850.0, 0.0, 850.0 };
 	rotSpeedN = { .1f, .1f, .1f };
 	scaleN = { 2.8f, 2.8f, 2.8f };
 	rotVectorN = glm::vec3(.05, 1.0, 0.0);
@@ -239,8 +239,9 @@ void Graphics::HierarchicalUpdate2(double dt) {
 
 	m_mesh->Update(dt);
 	m_ship = m_mesh->GetModel();
+	float sAngle = m_mesh->getAngle();
 	glm::decompose(m_ship, scale, rotation, translation, skew, perspective);
-	m_camera->Update(m_ship, translation, rotation.y);
+	m_camera->Update(m_ship, translation, sAngle);
 }
 
 

@@ -18,7 +18,8 @@ public:
     void Render(GLint positionAttribLoc, GLint colorAttribLoc, GLint tcAttribLoc, GLint hasTex);
 
     void setSpeed(glm::vec3 spd) { m_speed = spd; };
-    void setRotation(float rot) { angle = rot; }
+    void setRotation(float rot) { angle = rot; };
+    float getAngle() { return angle; };
 
     glm::mat4 GetModel();
 
@@ -27,6 +28,7 @@ public:
 
     bool hasTex;
     GLuint getTextureID() { return m_texture->getTextureID(); }
+    float angle;
 
 
 
@@ -42,8 +44,6 @@ private:
     Texture* m_texture;
 
     GLuint vao;
-
-    float angle;
 };
 
 #endif

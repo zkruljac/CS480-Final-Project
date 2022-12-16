@@ -101,7 +101,7 @@ void Engine::ProcessInput()
     if (glfwGetKey(m_window->getWindow(), GLFW_KEY_W) == GLFW_PRESS)
         m_graphics->getShip()->setSpeed(glm::vec3(0, 0, 10));
     if (glfwGetKey(m_window->getWindow(), GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)
-        m_graphics->getShip()->setSpeed(glm::vec3(0, 0, 40));
+        m_graphics->getShip()->setSpeed(glm::vec3(0, 0, 60));
     if (glfwGetKey(m_window->getWindow(), GLFW_KEY_A) == GLFW_PRESS)
         m_graphics->getShip()->setRotation(.04f);
     else
