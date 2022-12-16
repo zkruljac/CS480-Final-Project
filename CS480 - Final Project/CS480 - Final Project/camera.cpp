@@ -35,14 +35,24 @@ bool Camera::Initialize(int w, int h)
 	return true;
 }
 
-void Camera::Update(glm::mat4 model, glm::vec3 translation, float rotation)
+void Camera::Update(glm::mat4 model, glm::vec3 translation, float rotation, glm::mat4 planet)
 {
-	angle += rotation;
-	//view = glm::lookAt(glm::vec3(0.0, 0.2, -1.0) + translation, glm::vec3(0.0, 0.2, 0.0) + translation, glm::vec3(0.0, 1.0, 0.0));
-	//view *= glm::rotate(glm::mat4(1.f), rotation, glm::vec3(0.0, 1.0, 0.0));
-	//view = glm::translate(view, glm::vec3(cos(rotation),0, -cos(rotation)));
-	//view = glm::translate(view, glm::vec3(cos(speed[0] * rotation) * dist[0], sin(speed[1] * rotation) * dist[1], sin(speed[2] * rotation) * dist[2]));
-	view = glm::lookAt(glm::vec3(cos(-speed[0] * angle) * dist[0] + translation[0], 0.2 + translation[1], sin(-speed[2] * angle) * dist[2] + translation[2]), glm::vec3(0.0, 0.2, 0.0) + translation, glm::vec3(0.0, 1.0, 0.0));
+	glm::decompose(planet, Pscale, Protation, Ptranslation, Pskew, Pperspective);
+
+	if (translation.x >= Ptranslation.x-3 && translation.x <= Ptranslation.x+3 && translation.y >= Ptranslation.y - 3 && translation.y <= Ptranslation.y + 3)
+	{
+		viewState = 1;
+	}
+	if (viewState == 1)
+	{
+		angle += rotation;
+		view = glm::lookAt(glm::vec3(cos(-speed[0] * angle) * 10 + Ptranslation.x, sin(-speed[2] * translation.z) * 10 + Ptranslation.y, sin(-speed[2] * angle) * 10 + Ptranslation.z), glm::vec3(0.0, 0.0, 0.0) + Ptranslation, glm::vec3(0.0, 1.0, 0.0));
+	}
+	if (viewState == 0)
+	{
+		angle += rotation;
+		view = glm::lookAt(glm::vec3(cos(-speed[0] * angle) * dist[0] + translation.x, 0.2 + translation.y, sin(-speed[2] * angle) * dist[2] + translation.z), glm::vec3(0.0, 0.2, 0.0) + translation, glm::vec3(0.0, 1.0, 0.0));
+	}
 }
 
 glm::mat4 Camera::GetProjection()

@@ -9,7 +9,7 @@ public:
     Camera();
     ~Camera();
     bool Initialize(int w, int h);
-    void Update(glm::mat4 model, glm::vec3, float);
+    void Update(glm::mat4 model, glm::vec3, float, glm::mat4 planet);
     void setSpeed(glm::vec3 spd) { m_speed = spd; };
     void setRotation(float rot) { angle = rot; }
     void setAngles(float angX, float angY) { xpos = angX; ypos = angY; };
@@ -21,7 +21,14 @@ public:
     glm::vec3 speed = { 1.0, 0.0, 1.0 };
     glm::vec3 dist = { 1.0, 0.0, 1.0 };
     float angle;
+    void setViewState(bool state) { viewState = state; };
+    bool viewState;
 
+    glm::vec3 Pscale;
+    glm::quat Protation;
+    glm::vec3 Pskew;
+    glm::vec3 Ptranslation;
+    glm::vec4 Pperspective;
 
 private:
 

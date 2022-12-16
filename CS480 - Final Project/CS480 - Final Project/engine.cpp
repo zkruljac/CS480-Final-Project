@@ -108,6 +108,8 @@ void Engine::ProcessInput()
         m_graphics->getShip()->setRotation(0.0f);
     if (glfwGetKey(m_window->getWindow(), GLFW_KEY_D) == GLFW_PRESS)
         m_graphics->getShip()->setRotation(-.04f);
+    if (glfwGetKey(m_window->getWindow(), GLFW_KEY_V) == GLFW_PRESS)
+        m_graphics->getCamera()->setViewState(0);
 
 
 

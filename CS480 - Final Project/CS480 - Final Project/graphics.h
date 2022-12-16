@@ -78,6 +78,8 @@ class Graphics
 
     Mesh* m_mesh;
 
+    glm::mat4 m_col;
+
 
     std::vector<float> speedS;
     std::vector<float> distS;
