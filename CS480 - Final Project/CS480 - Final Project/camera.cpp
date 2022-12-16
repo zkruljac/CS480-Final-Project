@@ -39,7 +39,7 @@ void Camera::Update(glm::mat4 model, glm::vec3 translation, float rotation, glm:
 {
 	glm::decompose(planet, Pscale, Protation, Ptranslation, Pskew, Pperspective);
 
-	if (translation.x >= Ptranslation.x-3 && translation.x <= Ptranslation.x+3 && translation.y >= Ptranslation.y - 3 && translation.y <= Ptranslation.y + 3)
+	if (translation.x >= Ptranslation.x-3 && translation.x <= Ptranslation.x+3 && translation.y >= Ptranslation.y - 3 && translation.y <= Ptranslation.y + 3 && translation.z >= Ptranslation.z - 3 && translation.z <= Ptranslation.z + 3)
 	{
 		viewState = 1;
 	}
