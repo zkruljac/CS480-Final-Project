@@ -51,6 +51,16 @@ class Graphics
     GLint m_colorAttrib;
     GLint m_tcAttrib;
     GLint m_hasTexture;
+   
+    GLint globalAmbientLocation;
+    GLint lightAmbientLoccation;
+    GLint lightDiffuseLocation;
+    GLint lightSpecularLocation;
+    GLint lightPositionLocation;
+    
+    GLint materialAmbientLocation;
+    GLint materialDiffuseLocation;
+    GLint materialSpecularLocation;
 
     Sphere* m_skybox;
 

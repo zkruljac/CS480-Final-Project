@@ -532,6 +532,14 @@ bool Graphics::collectShPrLocs() {
 		anyProblem = false;
 	}
 
+	// Locate the global ambient attribute
+	globalAmbientLocation = m_shader->GetUniformLocation("GlobalAmbient");
+	if (globalAmbientLocation == -1) {
+		printf("globalAmbientLocation atribute not found\n");
+		anyProblem = false;
+	}
+
+
 	return anyProblem;
 }
 
