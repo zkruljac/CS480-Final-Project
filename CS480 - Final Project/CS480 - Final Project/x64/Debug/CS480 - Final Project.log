@@ -1,59 +1,88 @@
 ﻿  camera.cpp
   engine.cpp
-C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\engine.cpp(141,23): warning C4244: 'return': conversion from 'double' to 'unsigned int', possible loss of data
+D:\School\CS480\FinalProject\CS480 - Final Project\CS480 - Final Project\engine.cpp(141,23): warning C4244: 'return': conversion from 'double' to 'unsigned int', possible loss of data
   graphics.cpp
-C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(147,34): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+D:\School\CS480\FinalProject\CS480 - Final Project\CS480 - Final Project\graphics.cpp(147,34): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(151,31): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+D:\School\CS480\FinalProject\CS480 - Final Project\CS480 - Final Project\graphics.cpp(151,31): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(157,31): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+D:\School\CS480\FinalProject\CS480 - Final Project\CS480 - Final Project\graphics.cpp(157,31): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(163,28): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+D:\School\CS480\FinalProject\CS480 - Final Project\CS480 - Final Project\graphics.cpp(163,28): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(169,29): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+D:\School\CS480\FinalProject\CS480 - Final Project\CS480 - Final Project\graphics.cpp(169,29): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(175,30): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+D:\School\CS480\FinalProject\CS480 - Final Project\CS480 - Final Project\graphics.cpp(175,30): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(181,29): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+D:\School\CS480\FinalProject\CS480 - Final Project\CS480 - Final Project\graphics.cpp(181,29): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(187,32): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+D:\School\CS480\FinalProject\CS480 - Final Project\CS480 - Final Project\graphics.cpp(187,32): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(193,33): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+D:\School\CS480\FinalProject\CS480 - Final Project\CS480 - Final Project\graphics.cpp(193,33): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(199,31): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+D:\School\CS480\FinalProject\CS480 - Final Project\CS480 - Final Project\graphics.cpp(199,31): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(240,17): warning C4244: 'argument': conversion from 'double' to 'unsigned int', possible loss of data
-C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(263,33): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
+D:\School\CS480\FinalProject\CS480 - Final Project\CS480 - Final Project\graphics.cpp(240,17): warning C4244: 'argument': conversion from 'double' to 'unsigned int', possible loss of data
+D:\School\CS480\FinalProject\CS480 - Final Project\CS480 - Final Project\graphics.cpp(263,33): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
+  Light.cpp
   main.cpp
+  mesh.cpp
+D:\School\CS480\FinalProject\CS480 - Final Project\CS480 - Final Project\mesh.cpp(105,65): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+D:\School\CS480\FinalProject\CS480 - Final Project\CS480 - Final Project\mesh.cpp(140,65): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+D:\School\CS480\FinalProject\CS480 - Final Project\CS480 - Final Project\mesh.cpp(181,20): warning C4018: '<': signed/unsigned mismatch
+  object.cpp
+D:\School\CS480\FinalProject\CS480 - Final Project\CS480 - Final Project\object.cpp(73,65): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+  sphere.cpp
+D:\School\CS480\FinalProject\CS480 - Final Project\CS480 - Final Project\sphere.cpp(90,68): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+  shader.cpp
+  Texture.cpp
+  window.cpp
   Generating Code...
-  CS480 - Final Project.vcxproj -> C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\x64\Debug\CS480 - Final Project.exe
+D:\School\CS480\FinalProject\CS480 - Final Project\CS480 - Final Project\mesh.cpp(200): warning C4715: 'Mesh::loadModelFromFile': not all control paths return a value
+  LINK : D:\School\CS480\FinalProject\CS480 - Final Project\x64\Debug\CS480 - Final Project.exe not found or not built by the last incremental link; performing full link
+glfw3.lib(window.obj) : warning LNK4099: PDB 'glfw3.pdb' was not found with 'glfw3.lib(window.obj)' or at 'D:\School\CS480\FinalProject\CS480 - Final Project\x64\Debug\glfw3.pdb'; linking object as if no debug info
+glfw3.lib(input.obj) : warning LNK4099: PDB 'glfw3.pdb' was not found with 'glfw3.lib(input.obj)' or at 'D:\School\CS480\FinalProject\CS480 - Final Project\x64\Debug\glfw3.pdb'; linking object as if no debug info
+glfw3.lib(init.obj) : warning LNK4099: PDB 'glfw3.pdb' was not found with 'glfw3.lib(init.obj)' or at 'D:\School\CS480\FinalProject\CS480 - Final Project\x64\Debug\glfw3.pdb'; linking object as if no debug info
+glfw3.lib(context.obj) : warning LNK4099: PDB 'glfw3.pdb' was not found with 'glfw3.lib(context.obj)' or at 'D:\School\CS480\FinalProject\CS480 - Final Project\x64\Debug\glfw3.pdb'; linking object as if no debug info
+glfw3.lib(win32_window.obj) : warning LNK4099: PDB 'glfw3.pdb' was not found with 'glfw3.lib(win32_window.obj)' or at 'D:\School\CS480\FinalProject\CS480 - Final Project\x64\Debug\glfw3.pdb'; linking object as if no debug info
+glfw3.lib(win32_thread.obj) : warning LNK4099: PDB 'glfw3.pdb' was not found with 'glfw3.lib(win32_thread.obj)' or at 'D:\School\CS480\FinalProject\CS480 - Final Project\x64\Debug\glfw3.pdb'; linking object as if no debug info
+glfw3.lib(win32_joystick.obj) : warning LNK4099: PDB 'glfw3.pdb' was not found with 'glfw3.lib(win32_joystick.obj)' or at 'D:\School\CS480\FinalProject\CS480 - Final Project\x64\Debug\glfw3.pdb'; linking object as if no debug info
+glfw3.lib(win32_time.obj) : warning LNK4099: PDB 'glfw3.pdb' was not found with 'glfw3.lib(win32_time.obj)' or at 'D:\School\CS480\FinalProject\CS480 - Final Project\x64\Debug\glfw3.pdb'; linking object as if no debug info
+glfw3.lib(win32_init.obj) : warning LNK4099: PDB 'glfw3.pdb' was not found with 'glfw3.lib(win32_init.obj)' or at 'D:\School\CS480\FinalProject\CS480 - Final Project\x64\Debug\glfw3.pdb'; linking object as if no debug info
+glfw3.lib(win32_monitor.obj) : warning LNK4099: PDB 'glfw3.pdb' was not found with 'glfw3.lib(win32_monitor.obj)' or at 'D:\School\CS480\FinalProject\CS480 - Final Project\x64\Debug\glfw3.pdb'; linking object as if no debug info
+glfw3.lib(monitor.obj) : warning LNK4099: PDB 'glfw3.pdb' was not found with 'glfw3.lib(monitor.obj)' or at 'D:\School\CS480\FinalProject\CS480 - Final Project\x64\Debug\glfw3.pdb'; linking object as if no debug info
+glfw3.lib(vulkan.obj) : warning LNK4099: PDB 'glfw3.pdb' was not found with 'glfw3.lib(vulkan.obj)' or at 'D:\School\CS480\FinalProject\CS480 - Final Project\x64\Debug\glfw3.pdb'; linking object as if no debug info
+glfw3.lib(wgl_context.obj) : warning LNK4099: PDB 'glfw3.pdb' was not found with 'glfw3.lib(wgl_context.obj)' or at 'D:\School\CS480\FinalProject\CS480 - Final Project\x64\Debug\glfw3.pdb'; linking object as if no debug info
+glfw3.lib(egl_context.obj) : warning LNK4099: PDB 'glfw3.pdb' was not found with 'glfw3.lib(egl_context.obj)' or at 'D:\School\CS480\FinalProject\CS480 - Final Project\x64\Debug\glfw3.pdb'; linking object as if no debug info
+glfw3.lib(osmesa_context.obj) : warning LNK4099: PDB 'glfw3.pdb' was not found with 'glfw3.lib(osmesa_context.obj)' or at 'D:\School\CS480\FinalProject\CS480 - Final Project\x64\Debug\glfw3.pdb'; linking object as if no debug info
+  CS480 - Final Project.vcxproj -> D:\School\CS480\FinalProject\CS480 - Final Project\x64\Debug\CS480 - Final Project.exe
