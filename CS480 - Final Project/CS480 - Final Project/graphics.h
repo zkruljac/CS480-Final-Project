@@ -28,6 +28,8 @@ class Graphics
     Camera* getCamera() { return m_camera; }
     Mesh* getShip() { return m_mesh; }
 
+    float sAngle;
+
   private:
     std::string ErrorString(GLenum error);
 

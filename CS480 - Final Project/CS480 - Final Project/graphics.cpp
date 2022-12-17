@@ -240,7 +240,7 @@ void Graphics::HierarchicalUpdate2(double dt) {
 	m_mesh->Update(dt);
 	m_ship = m_mesh->GetModel();
 	m_col = m_earth->GetModel();
-	float sAngle = m_mesh->getAngle();
+	sAngle = m_mesh->getAngle();
 	glm::decompose(m_ship, scale, rotation, translation, skew, perspective);
 	m_camera->Update(m_ship, translation, sAngle, m_col);
 }

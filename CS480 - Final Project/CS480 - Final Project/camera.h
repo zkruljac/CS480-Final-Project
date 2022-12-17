@@ -20,7 +20,7 @@ public:
 
     glm::vec3 speed = { 1.0, 0.0, 1.0 };
     glm::vec3 dist = { 1.0, 0.0, 1.0 };
-    float angle;
+    float angle = 0.0f;
     void setViewState(bool state) { viewState = state; };
     bool viewState;
 
