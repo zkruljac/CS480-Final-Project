@@ -284,8 +284,16 @@ void Graphics::Render()
 		LightSpecular[i] = m_light->m_lightSpecular[i];
 		LightPosition[i] = m_light->m_lightPositionViewSpace[i];
 	}
+	
+	GLfloat light_ambient[] = {0.0, 0.0, 0.0, 1.0};
+	GLfloat light_diffuse[] = { 1.0, 1.0, 1.0, 1.0 };
+	GLfloat light_specular[] = { 1.0, 1.0, 1.0, 1.0 };
+	GLfloat light_position[] = { 0.0, 0.0, 0.0, 0.0 };
 
-	m_light->SetViewSpacePosition(m_camera->GetView());
+	glLightfv(GL_LIGHT0, GL_AMBIENT, light_ambient);
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
+	glLightfv(GL_LIGHT0, GL_SPECULAR, light_specular);
+	glLightfv(GL_LIGHT0, GL_POSITION, light_position);
 
 	glProgramUniform4fv(m_shader->GetShaderProgram(), globalAmbientLocation, 1, GlobalAmbient);
 	glProgramUniform4fv(m_shader->GetShaderProgram(), lightAmbientLocation, 1, LightAmbient);
@@ -304,6 +312,13 @@ void Graphics::Render()
 		MaterialDiffuse[i] = m_light->m_lightDiffuse[i];
 		MaterialSpecular[i] = m_light->m_lightSpecular[i];
 	}
+
+	for (int i = 0; i < 3; i++) {
+		MaterialAmbient[i] = .5;
+		MaterialSpecular[i] = .5;
+		MaterialShininess = 20;
+	}
+
 	if (m_mesh != NULL) {
 		glUniform1i(m_hasTexture, false);
 		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_mesh->GetModel()));
@@ -327,11 +342,11 @@ void Graphics::Render()
 		}
 	}
 
-	/*if (m_pyramid != NULL) {
-		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_pyramid->GetModel()));
-		m_pyramid->Render(m_positionAttrib, m_colorAttrib);
-	}*/
-
+	for (int i = 0; i < 3; i++) {
+		MaterialAmbient[i] = 1;
+		MaterialSpecular[i] = .9;
+		MaterialShininess = 50;
+	}
 	if (m_sun != NULL) {
 		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_sun->GetModel()));
 		// Material
@@ -352,6 +367,12 @@ void Graphics::Render()
 		}
 	}
 
+	for (int i = 0; i < 3; i++) {
+		MaterialAmbient[i] = .3;
+		//MaterialDiffuse[i] = 
+		MaterialSpecular[i] = .4;
+		MaterialShininess = 10;
+	}
 	if (m_skybox != NULL) {
 		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_skybox->GetModel()));
 		// Material
@@ -370,6 +391,13 @@ void Graphics::Render()
 			glUniform1i(sampler, 0);
 			m_skybox->Render(m_positionAttrib, m_colorAttrib, m_tcAttrib, m_hasTexture);
 		}
+	}
+	
+	//MaterialAmbient[4] = {1, 1, 1};
+	for (int i = 0; i < 3; i++) {
+		MaterialAmbient[i] = .5;
+		MaterialSpecular[i] = .5;
+		MaterialShininess = 20;
 	}
 
 	if (m_earth != NULL) {

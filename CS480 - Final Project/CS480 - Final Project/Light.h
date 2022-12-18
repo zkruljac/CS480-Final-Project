@@ -13,11 +13,15 @@ public:
 
 	void SetViewSpacePosition(glm::mat4 viewMatrix);
 
-	glm::vec4 m_globalAmbient;
+	glm::vec4 m_globalAmbient = {0.0, 0.0, 0.0, 1.0};
 
-	glm::vec4 m_lightAmbient;
-	glm::vec4 m_lightDiffuse;
-	glm::vec4 m_lightSpecular;
+	glm::vec4 m_lightAmbient = { 0.0, 0.0, 0.0, 1.0 };
+	glm::vec4 m_lightDiffuse = { 1.0, 1.0, 1.0, 1.0 };
+	glm::vec4 m_lightSpecular = { 1.0, 1.0, 1.0, 1.0 };
+
+	glm::vec4 m_lightAmbient1 = { 0.0, 0.0, 0.0, 1.0 };
+	glm::vec4 m_lightDiffuse1 = { 1.0, 1.0, 1.0, 1.0 };
+	glm::vec4 m_lightSpecular1 = { 1.0, 1.0, 1.0, 1.0 };
 
 	glm::vec3 m_lightPositionViewSpace;
 

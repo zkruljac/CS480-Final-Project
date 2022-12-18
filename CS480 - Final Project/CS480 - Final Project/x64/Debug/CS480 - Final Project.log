@@ -1,1 +1,62 @@
-﻿LINK : fatal error LNK1104: cannot open file 'D:\School\CS480\FinalProject\CS480 - Final Project\x64\Debug\CS480 - Final Project.exe'
+﻿  Light.cpp
+  engine.cpp
+D:\School\CS480\FinalProject\CS480 - Final Project\CS480 - Final Project\engine.cpp(141,23): warning C4244: 'return': conversion from 'double' to 'unsigned int', possible loss of data
+  graphics.cpp
+D:\School\CS480\FinalProject\CS480 - Final Project\CS480 - Final Project\graphics.cpp(148,34): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+D:\School\CS480\FinalProject\CS480 - Final Project\CS480 - Final Project\graphics.cpp(152,31): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+D:\School\CS480\FinalProject\CS480 - Final Project\CS480 - Final Project\graphics.cpp(158,31): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+D:\School\CS480\FinalProject\CS480 - Final Project\CS480 - Final Project\graphics.cpp(164,28): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+D:\School\CS480\FinalProject\CS480 - Final Project\CS480 - Final Project\graphics.cpp(170,29): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+D:\School\CS480\FinalProject\CS480 - Final Project\CS480 - Final Project\graphics.cpp(176,30): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+D:\School\CS480\FinalProject\CS480 - Final Project\CS480 - Final Project\graphics.cpp(182,29): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+D:\School\CS480\FinalProject\CS480 - Final Project\CS480 - Final Project\graphics.cpp(188,32): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+D:\School\CS480\FinalProject\CS480 - Final Project\CS480 - Final Project\graphics.cpp(194,33): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+D:\School\CS480\FinalProject\CS480 - Final Project\CS480 - Final Project\graphics.cpp(200,31): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+D:\School\CS480\FinalProject\CS480 - Final Project\CS480 - Final Project\graphics.cpp(241,17): warning C4244: 'argument': conversion from 'double' to 'unsigned int', possible loss of data
+D:\School\CS480\FinalProject\CS480 - Final Project\CS480 - Final Project\graphics.cpp(264,33): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
+D:\School\CS480\FinalProject\CS480 - Final Project\CS480 - Final Project\graphics.cpp(347,27): warning C4305: '=': truncation from 'double' to 'float'
+D:\School\CS480\FinalProject\CS480 - Final Project\CS480 - Final Project\graphics.cpp(371,26): warning C4305: '=': truncation from 'double' to 'float'
+D:\School\CS480\FinalProject\CS480 - Final Project\CS480 - Final Project\graphics.cpp(373,27): warning C4305: '=': truncation from 'double' to 'float'
+  main.cpp
+  Generating Code...
+  CS480 - Final Project.vcxproj -> D:\School\CS480\FinalProject\CS480 - Final Project\x64\Debug\CS480 - Final Project.exe
