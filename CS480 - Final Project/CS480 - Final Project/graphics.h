@@ -11,6 +11,7 @@ using namespace std;
 #include "object.h"
 #include "sphere.h"
 #include "mesh.h"
+#include "Light.h"
 
 #define numVBOs 2;
 #define numIBs 2;
@@ -44,23 +45,26 @@ class Graphics
     Camera *m_camera;
     Shader *m_shader;
 
-    GLint m_projectionMatrix;
-    GLint m_viewMatrix;
-    GLint m_modelMatrix;
-    GLint m_positionAttrib;
-    GLint m_colorAttrib;
-    GLint m_tcAttrib;
-    GLint m_hasTexture;
+    GLuint m_projectionMatrix;
+    GLuint m_viewMatrix;
+    GLuint m_modelMatrix;
+    GLuint m_positionAttrib;
+    GLuint m_colorAttrib;
+    GLuint m_tcAttrib;
+    GLuint m_hasTexture;
    
-    GLint globalAmbientLocation;
-    GLint lightAmbientLoccation;
-    GLint lightDiffuseLocation;
-    GLint lightSpecularLocation;
-    GLint lightPositionLocation;
+    GLuint globalAmbientLocation;
+    GLuint lightAmbientLocation;
+    GLuint lightDiffuseLocation;
+    GLuint lightSpecularLocation;
+    GLuint lightPositionLocation;
     
-    GLint materialAmbientLocation;
-    GLint materialDiffuseLocation;
-    GLint materialSpecularLocation;
+    GLuint materialAmbientLocation;
+    GLuint materialDiffuseLocation;
+    GLuint materialSpecularLocation; 
+    GLuint materialShininessLocation;
+
+    Light* m_light;
 
     Sphere* m_skybox;
 

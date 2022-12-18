@@ -79,6 +79,7 @@ bool Graphics::Initialize(int width, int height)
 	rmatM = glm::rotate(glm::mat4(1.0f), 1 * 3.14f, glm::vec3(0, 1.0f, .0f));
 	smatM = glm::scale(glm::vec3(.1, .1, .1));
 
+	m_light = new Light(m_camera->GetView(), glm::vec4(1.0, 1.0, 1.0, 1.0), glm::vec4(1.0, 1.0, 1.0, 1.0), glm::vec4(1.0, 1.0, 1.0, 1.0), glm::vec4(0.0, 0.0, 0.0, 1.0));
 	// Starship
 	m_mesh = new Mesh(glm::vec3(2.0f, 3.0f, -5.0f), "Planetary Textures\\SpaceShip-1.obj", "Planetary Textures\\SpaceShip-1.png");
 
@@ -270,15 +271,49 @@ void Graphics::Render()
 	glUniformMatrix4fv(m_projectionMatrix, 1, GL_FALSE, glm::value_ptr(m_camera->GetProjection()));
 	glUniformMatrix4fv(m_viewMatrix, 1, GL_FALSE, glm::value_ptr(m_camera->GetView()));
 
-	// Render the objects
-	/*if (m_cube != NULL) {
-		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_cube->GetModel()));
-		m_cube->Render(m_positionAttrib,m_colorAttrib);
-	}*/
+	float GlobalAmbient[3];
+	float LightAmbient[3];
+	float LightDiffuse[3];
+	float LightSpecular[3];
+	float LightPosition[3];
 
+	for (int i = 0; i < 3; i++) {
+		GlobalAmbient[i] = m_light->m_globalAmbient[i];
+		LightAmbient[i] = m_light->m_lightAmbient[i];
+		LightDiffuse[i] = m_light->m_lightDiffuse[i];
+		LightSpecular[i] = m_light->m_lightSpecular[i];
+		LightPosition[i] = m_light->m_lightPositionViewSpace[i];
+	}
+
+	m_light->SetViewSpacePosition(m_camera->GetView());
+
+	glProgramUniform4fv(m_shader->GetShaderProgram(), globalAmbientLocation, 1, GlobalAmbient);
+	glProgramUniform4fv(m_shader->GetShaderProgram(), lightAmbientLocation, 1, LightAmbient);
+	glProgramUniform4fv(m_shader->GetShaderProgram(), lightDiffuseLocation, 1, LightDiffuse);
+	glProgramUniform4fv(m_shader->GetShaderProgram(), lightSpecularLocation, 1, LightSpecular);
+	glProgramUniform3fv(m_shader->GetShaderProgram(), lightPositionLocation, 1, LightPosition);
+
+	//Materials
+	float MaterialAmbient[4] = { 1.0, 1.0, 1.0, 1.0 };
+	float MaterialDiffuse[4] = { 1.0, 1.0, 1.0, 1.0 };
+	float MaterialSpecular[4] = { 1.0, 1.0, 1.0, 1.0 };
+	float MaterialShininess = 20.0;
+
+	for (int i = 0; i < 4; i++) {
+		MaterialAmbient[i] = m_light->m_lightAmbient[i];
+		MaterialDiffuse[i] = m_light->m_lightDiffuse[i];
+		MaterialSpecular[i] = m_light->m_lightSpecular[i];
+	}
 	if (m_mesh != NULL) {
 		glUniform1i(m_hasTexture, false);
 		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_mesh->GetModel()));
+
+		// Material
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialAmbientLocation, 1, MaterialAmbient);
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialDiffuseLocation, 1, MaterialDiffuse);
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialSpecularLocation, 1, MaterialSpecular);
+		glProgramUniform1f(m_shader->GetShaderProgram(), materialShininessLocation, MaterialShininess);
+
 		if (m_mesh->hasTex) {
 			glActiveTexture(GL_TEXTURE0);
 			glBindTexture(GL_TEXTURE_2D, m_mesh->getTextureID());
@@ -299,6 +334,11 @@ void Graphics::Render()
 
 	if (m_sun != NULL) {
 		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_sun->GetModel()));
+		// Material
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialAmbientLocation, 1, MaterialAmbient);
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialDiffuseLocation, 1, MaterialDiffuse);
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialSpecularLocation, 1, MaterialSpecular);
+		glProgramUniform1f(m_shader->GetShaderProgram(), materialShininessLocation, MaterialShininess);
 		if (m_sun->hasTex) {
 			glActiveTexture(GL_TEXTURE0);
 			glBindTexture(GL_TEXTURE_2D, m_sun->getTextureID());
@@ -314,6 +354,11 @@ void Graphics::Render()
 
 	if (m_skybox != NULL) {
 		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_skybox->GetModel()));
+		// Material
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialAmbientLocation, 1, MaterialAmbient);
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialDiffuseLocation, 1, MaterialDiffuse);
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialSpecularLocation, 1, MaterialSpecular);
+		glProgramUniform1f(m_shader->GetShaderProgram(), materialShininessLocation, MaterialShininess);
 		if (m_skybox->hasTex) {
 			glActiveTexture(GL_TEXTURE0);
 			glBindTexture(GL_TEXTURE_2D, m_skybox->getTextureID());
@@ -329,6 +374,11 @@ void Graphics::Render()
 
 	if (m_earth != NULL) {
 		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_earth->GetModel()));
+		// Material
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialAmbientLocation, 1, MaterialAmbient);
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialDiffuseLocation, 1, MaterialDiffuse);
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialSpecularLocation, 1, MaterialSpecular);
+		glProgramUniform1f(m_shader->GetShaderProgram(), materialShininessLocation, MaterialShininess);
 		if (m_earth->hasTex) {
 			glActiveTexture(GL_TEXTURE0);
 			glBindTexture(GL_TEXTURE_2D, m_earth->getTextureID());
@@ -346,6 +396,11 @@ void Graphics::Render()
 	// Render Moon
 	if (m_luna != NULL) {
 		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_luna->GetModel()));
+		// Material
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialAmbientLocation, 1, MaterialAmbient);
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialDiffuseLocation, 1, MaterialDiffuse);
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialSpecularLocation, 1, MaterialSpecular);
+		glProgramUniform1f(m_shader->GetShaderProgram(), materialShininessLocation, MaterialShininess);
 		if (m_luna->hasTex) {
 			glActiveTexture(GL_TEXTURE0);
 			glBindTexture(GL_TEXTURE_2D, m_luna->getTextureID());
@@ -361,6 +416,11 @@ void Graphics::Render()
 
 	if (m_mercury != NULL) {
 		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_mercury->GetModel()));
+		// Material
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialAmbientLocation, 1, MaterialAmbient);
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialDiffuseLocation, 1, MaterialDiffuse);
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialSpecularLocation, 1, MaterialSpecular);
+		glProgramUniform1f(m_shader->GetShaderProgram(), materialShininessLocation, MaterialShininess);
 		if (m_mercury->hasTex) {
 			glActiveTexture(GL_TEXTURE0);
 			glBindTexture(GL_TEXTURE_2D, m_mercury->getTextureID());
@@ -376,6 +436,11 @@ void Graphics::Render()
 
 	if (m_venus != NULL) {
 		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_venus->GetModel()));
+		// Material
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialAmbientLocation, 1, MaterialAmbient);
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialDiffuseLocation, 1, MaterialDiffuse);
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialSpecularLocation, 1, MaterialSpecular);
+		glProgramUniform1f(m_shader->GetShaderProgram(), materialShininessLocation, MaterialShininess);
 		if (m_venus->hasTex) {
 			glActiveTexture(GL_TEXTURE0);
 			glBindTexture(GL_TEXTURE_2D, m_venus->getTextureID());
@@ -391,6 +456,11 @@ void Graphics::Render()
 
 	if (m_mars != NULL) {
 		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_mars->GetModel()));
+		// Material
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialAmbientLocation, 1, MaterialAmbient);
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialDiffuseLocation, 1, MaterialDiffuse);
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialSpecularLocation, 1, MaterialSpecular);
+		glProgramUniform1f(m_shader->GetShaderProgram(), materialShininessLocation, MaterialShininess);
 		if (m_mars->hasTex) {
 			glActiveTexture(GL_TEXTURE0);
 			glBindTexture(GL_TEXTURE_2D, m_mars->getTextureID());
@@ -406,6 +476,11 @@ void Graphics::Render()
 
 	if (m_jupiter != NULL) {
 		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_jupiter->GetModel()));
+		// Material
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialAmbientLocation, 1, MaterialAmbient);
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialDiffuseLocation, 1, MaterialDiffuse);
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialSpecularLocation, 1, MaterialSpecular);
+		glProgramUniform1f(m_shader->GetShaderProgram(), materialShininessLocation, MaterialShininess);
 		if (m_jupiter->hasTex) {
 			glActiveTexture(GL_TEXTURE0);
 			glBindTexture(GL_TEXTURE_2D, m_jupiter->getTextureID());
@@ -421,6 +496,11 @@ void Graphics::Render()
 
 	if (m_saturn != NULL) {
 		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_saturn->GetModel()));
+		// Material
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialAmbientLocation, 1, MaterialAmbient);
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialDiffuseLocation, 1, MaterialDiffuse);
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialSpecularLocation, 1, MaterialSpecular);
+		glProgramUniform1f(m_shader->GetShaderProgram(), materialShininessLocation, MaterialShininess);
 		if (m_saturn->hasTex) {
 			glActiveTexture(GL_TEXTURE0);
 			glBindTexture(GL_TEXTURE_2D, m_saturn->getTextureID());
@@ -436,6 +516,11 @@ void Graphics::Render()
 
 	if (m_uranus != NULL) {
 		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_uranus->GetModel()));
+		// Material
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialAmbientLocation, 1, MaterialAmbient);
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialDiffuseLocation, 1, MaterialDiffuse);
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialSpecularLocation, 1, MaterialSpecular);
+		glProgramUniform1f(m_shader->GetShaderProgram(), materialShininessLocation, MaterialShininess);
 		if (m_uranus->hasTex) {
 			glActiveTexture(GL_TEXTURE0);
 			glBindTexture(GL_TEXTURE_2D, m_uranus->getTextureID());
@@ -451,6 +536,11 @@ void Graphics::Render()
 
 	if (m_neptune != NULL) {
 		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_neptune->GetModel()));
+		// Material
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialAmbientLocation, 1, MaterialAmbient);
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialDiffuseLocation, 1, MaterialDiffuse);
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialSpecularLocation, 1, MaterialSpecular);
+		glProgramUniform1f(m_shader->GetShaderProgram(), materialShininessLocation, MaterialShininess);
 		if (m_neptune->hasTex) {
 			glActiveTexture(GL_TEXTURE0);
 			glBindTexture(GL_TEXTURE_2D, m_neptune->getTextureID());
@@ -536,6 +626,54 @@ bool Graphics::collectShPrLocs() {
 	globalAmbientLocation = m_shader->GetUniformLocation("GlobalAmbient");
 	if (globalAmbientLocation == -1) {
 		printf("globalAmbientLocation atribute not found\n");
+		anyProblem = false;
+	}
+
+	lightAmbientLocation = m_shader->GetUniformLocation("light.ambient");
+	if (lightAmbientLocation == -1) {
+		printf("lightAmbientLocation atribute not found\n");
+		anyProblem = false;
+	}
+
+	lightDiffuseLocation = m_shader->GetUniformLocation("light.diffuse");
+	if (lightDiffuseLocation == -1) {
+		printf("lightDiffuseLocation atribute not found\n");
+		anyProblem = false;
+	}
+
+	lightSpecularLocation = m_shader->GetUniformLocation("light.spec");
+	if (lightSpecularLocation == -1) {
+		printf("lightSpecularLocation atribute not found\n");
+		anyProblem = false;
+	}
+
+	lightPositionLocation = m_shader->GetUniformLocation("light.position");
+	if (lightPositionLocation == -1) {
+		printf("lightPositionLocation atribute not found\n");
+		anyProblem = false;
+	}
+
+	materialAmbientLocation = m_shader->GetUniformLocation("material.ambient");
+	if (materialAmbientLocation == -1) {
+		printf("materialAmbientLocation atribute not found\n");
+		anyProblem = false;
+	}
+
+	materialDiffuseLocation = m_shader->GetUniformLocation("material.diffuse");
+	if (materialDiffuseLocation == -1) {
+		printf("materialDiffuseLocation atribute not found\n");
+		anyProblem = false;
+	}
+
+	materialSpecularLocation = m_shader->GetUniformLocation("material.spec");
+	if (materialSpecularLocation == -1) {
+		printf("materialSpecularLocation atribute not found\n");
+		anyProblem = false;
+	}
+
+	materialShininessLocation = m_shader->GetUniformLocation("material.shininess");
+	if (materialShininessLocation == -1) {
+		printf("materialShininessLocation atribute not found\n");
 		anyProblem = false;
 	}
 
