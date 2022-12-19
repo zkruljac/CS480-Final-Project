@@ -1,6 +1,3 @@
-<<<<<<< Updated upstream
-﻿LINK : fatal error LNK1104: cannot open file 'D:\School\CS480\FinalProject\CS480 - Final Project\x64\Debug\CS480 - Final Project.exe'
-=======
 ﻿  graphics.cpp
 C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(152,34): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
@@ -32,7 +29,7 @@ C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Fina
           [
               _Ty=float
           ]
-C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(186,31): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(186,29): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
@@ -65,4 +62,3 @@ C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Fina
 C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(261,17): warning C4244: 'argument': conversion from 'double' to 'unsigned int', possible loss of data
 C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(284,33): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
   CS480 - Final Project.vcxproj -> C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\x64\Debug\CS480 - Final Project.exe
->>>>>>> Stashed changes

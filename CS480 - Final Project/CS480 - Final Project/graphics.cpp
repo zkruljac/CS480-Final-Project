@@ -183,7 +183,7 @@ void Graphics::HierarchicalUpdate2(double dt) {
 	scaleMa = { 1.4f, 1.4f, 1.4f };
 	rotVectorMa = glm::vec3(0.0, 1.0, 0.0);
 
-	speedDei = { -.2, -0.1, -.25 };
+	speedDei = { -.2, -0.1, -.2 };
 	distDei = { 8.0, 1.0, 8.0 };
 	rotSpeedDei = { 0.2f, 0.f, 0.2f };
 	scaleDei = { 0.3f, 0.4f, 0.2f };
@@ -304,10 +304,6 @@ void Graphics::Render()
 		LightSpecular[i] = m_light->m_lightSpecular[i];
 		LightPosition[i] = m_light->m_lightPositionViewSpace[i];
 	}
-<<<<<<< Updated upstream
-
-	m_light->SetViewSpacePosition(m_camera->GetView());
-=======
 	
 	/*GLfloat light_ambient[] = {0.0, 0.0, 0.0, 1.0};
 	GLfloat light_diffuse[] = { 1.0, 1.0, 1.0, 1.0 };
@@ -318,7 +314,6 @@ void Graphics::Render()
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
 	glLightfv(GL_LIGHT0, GL_SPECULAR, light_specular);
 	glLightfv(GL_LIGHT0, GL_POSITION, light_position);*/
->>>>>>> Stashed changes
 
 	glProgramUniform4fv(m_shader->GetShaderProgram(), globalAmbientLocation, 1, GlobalAmbient);
 	glProgramUniform4fv(m_shader->GetShaderProgram(), lightAmbientLocation, 1, LightAmbient);
@@ -337,8 +332,6 @@ void Graphics::Render()
 		MaterialDiffuse[i] = m_light->m_lightDiffuse[i];
 		MaterialSpecular[i] = m_light->m_lightSpecular[i];
 	}
-<<<<<<< Updated upstream
-=======
 
 	for (int i = 0; i < 3; i++) {
 		MaterialAmbient[i] = 1.0;
@@ -346,7 +339,6 @@ void Graphics::Render()
 		MaterialShininess = 20;
 	}
 
->>>>>>> Stashed changes
 	if (m_mesh != NULL) {
 		glUniform1i(m_hasTexture, false);
 		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_mesh->GetModel()));
@@ -370,19 +362,11 @@ void Graphics::Render()
 		}
 	}
 
-<<<<<<< Updated upstream
-	/*if (m_pyramid != NULL) {
-		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_pyramid->GetModel()));
-		m_pyramid->Render(m_positionAttrib, m_colorAttrib);
-	}*/
-
-=======
 	/*for (int i = 0; i < 3; i++) {
 		MaterialAmbient[i] = 1;
 		MaterialSpecular[i] = .9;
 		MaterialShininess = 50;
 	}*/
->>>>>>> Stashed changes
 	if (m_sun != NULL) {
 		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_sun->GetModel()));
 		// Material
@@ -403,15 +387,12 @@ void Graphics::Render()
 		}
 	}
 
-<<<<<<< Updated upstream
-=======
 	/*for (int i = 0; i < 3; i++) {
 		MaterialAmbient[i] = .3;
 		//MaterialDiffuse[i] = 
 		MaterialSpecular[i] = .4;
 		MaterialShininess = 10;
 	}*/
->>>>>>> Stashed changes
 	if (m_skybox != NULL) {
 		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_skybox->GetModel()));
 		// Material
@@ -431,8 +412,6 @@ void Graphics::Render()
 			m_skybox->Render(m_positionAttrib, m_colorAttrib, m_tcAttrib, m_hasTexture);
 		}
 	}
-<<<<<<< Updated upstream
-=======
 	
 	/*//MaterialAmbient[4] = {1, 1, 1};
 	for (int i = 0; i < 3; i++) {
@@ -440,7 +419,6 @@ void Graphics::Render()
 		MaterialSpecular[i] = .5;
 		MaterialShininess = 20;
 	}*/
->>>>>>> Stashed changes
 
 	if (m_earth != NULL) {
 		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_earth->GetModel()));
