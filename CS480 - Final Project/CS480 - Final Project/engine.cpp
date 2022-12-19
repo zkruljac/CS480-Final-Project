@@ -67,10 +67,12 @@ void Engine::ProcessInput()
    // glfwSetScrollCallback(m_window, scroll_callback);
 
     //get mouse position
-    //glfwGetCursorPos(m_window->getWindow(), &xpos, &ypos);
+    glfwGetCursorPos(m_window->getWindow(), &xpos, &ypos);
     //adjust the camera position according to arrow keys and mouse position
     //m_graphics->getCamera()->setView(glm::lookAt(glm::vec3(xcamPos, ycamPos + 20, zcamPos-40), glm::vec3((-xpos + 800) / 8, (-ypos + 400) / 8, 0.0), glm::vec3(0.0, 1.0, 0.0)));
 
+    xpos = -xpos + 800;
+    ypos = -ypos + 400;
 
     // Update camera animation here.
 
@@ -92,22 +94,25 @@ void Engine::ProcessInput()
         m_graphics->getShip()->setSpeed(glm::vec3(0., -10, 0.));
     if (glfwGetKey(m_window->getWindow(), GLFW_KEY_SPACE) == GLFW_PRESS)
         m_graphics->getShip()->setSpeed(glm::vec3(0., 10, 0.));
-    if (glfwGetKey(m_window->getWindow(), GLFW_KEY_Q) == GLFW_PRESS)
+    if (glfwGetKey(m_window->getWindow(), GLFW_KEY_A) == GLFW_PRESS)
         m_graphics->getShip()->setSpeed(glm::vec3(10, 0., 0.));
-    if (glfwGetKey(m_window->getWindow(), GLFW_KEY_E) == GLFW_PRESS)
+    if (glfwGetKey(m_window->getWindow(), GLFW_KEY_D) == GLFW_PRESS)
         m_graphics->getShip()->setSpeed(glm::vec3(-10, 0., 0.));
     if (glfwGetKey(m_window->getWindow(), GLFW_KEY_S) == GLFW_PRESS)
         m_graphics->getShip()->setSpeed(glm::vec3(0, 0, -10));
     if (glfwGetKey(m_window->getWindow(), GLFW_KEY_W) == GLFW_PRESS)
         m_graphics->getShip()->setSpeed(glm::vec3(0, 0, 10));
     if (glfwGetKey(m_window->getWindow(), GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)
-        m_graphics->getShip()->setSpeed(glm::vec3(0, 0, 60));
-    if (glfwGetKey(m_window->getWindow(), GLFW_KEY_A) == GLFW_PRESS)
-        m_graphics->getShip()->setRotation(.02f);
+    {
+        m_graphics->getShip()->setSpeed(glm::vec3(0, 0, 80));
+        m_graphics->getShip()->setRotation(xpos / 100000);
+    }
     else
-        m_graphics->getShip()->setRotation(0.0f);
-    if (glfwGetKey(m_window->getWindow(), GLFW_KEY_D) == GLFW_PRESS)
-        m_graphics->getShip()->setRotation(-.02f);
+        m_graphics->getShip()->setRotation(xpos / 20000);
+
+    if (glfwGetKey(m_window->getWindow(), GLFW_KEY_X) == GLFW_PRESS)
+        m_graphics->getShip()->setSpeed(glm::vec3(0., 0., 0.));
+
 
 
     if (glfwGetKey(m_window->getWindow(), GLFW_KEY_V) == GLFW_PRESS)

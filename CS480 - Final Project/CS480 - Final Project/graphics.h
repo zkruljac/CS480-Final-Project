@@ -69,11 +69,16 @@ class Graphics
     Sphere* m_skybox;
 
     Sphere* m_sun;
-    Sphere* m_earth;
-    Sphere* m_luna;
+
     Sphere* m_mercury;
     Sphere* m_venus;
+
+    Sphere* m_earth;
+    Sphere* m_luna;
+
     Sphere* m_mars;
+    Sphere* m_deimos;
+    Sphere* m_phobos;
 
     Sphere* m_jupiter;
     Sphere* m_ganymede;
@@ -169,6 +174,60 @@ class Graphics
     glm::mat4 smatMa;
     glm::vec3 rotVectorMa;
 
+    std::vector<float> speedDei;
+    std::vector<float> distDei;
+    std::vector<float> rotSpeedDei;
+    std::vector<float> scaleDei;
+    glm::mat4 tmatDei;
+    glm::mat4 rmatDei;
+    glm::mat4 smatDei;
+    glm::vec3 rotVectorDei;
+
+    std::vector<float> speedPhob;
+    std::vector<float> distPhob;
+    std::vector<float> rotSpeedPhob;
+    std::vector<float> scalePhob;
+    glm::mat4 tmatPhob;
+    glm::mat4 rmatPhob;
+    glm::mat4 smatPhob;
+    glm::vec3 rotVectorPhob;
+
+    std::vector<float> speedGany;
+    std::vector<float> distGany;
+    std::vector<float> rotSpeedGany;
+    std::vector<float> scaleGany;
+    glm::mat4 tmatGany;
+    glm::mat4 rmatGany;
+    glm::mat4 smatGany;
+    glm::vec3 rotVectorGany;
+
+    std::vector<float> speedEur;
+    std::vector<float> distEur;
+    std::vector<float> rotSpeedEur;
+    std::vector<float> scaleEur;
+    glm::mat4 tmatEur;
+    glm::mat4 rmatEur;
+    glm::mat4 smatEur;
+    glm::vec3 rotVectorEur;
+
+    std::vector<float> speedCall;
+    std::vector<float> distCall;
+    std::vector<float> rotSpeedCall;
+    std::vector<float> scaleCall;
+    glm::mat4 tmatCall;
+    glm::mat4 rmatCall;
+    glm::mat4 smatCall;
+    glm::vec3 rotVectorCall;
+
+    std::vector<float> speedIo;
+    std::vector<float> distIo;
+    std::vector<float> rotSpeedIo;
+    std::vector<float> scaleIo;
+    glm::mat4 tmatIo;
+    glm::mat4 rmatIo;
+    glm::mat4 smatIo;
+    glm::vec3 rotVectorIo;
+
     std::vector<float> speedJ;
     std::vector<float> distJ;
     std::vector<float> rotSpeedJ;
@@ -186,6 +245,15 @@ class Graphics
     glm::mat4 rmatSa;
     glm::mat4 smatSa;
     glm::vec3 rotVectorSa;
+
+    std::vector<float> speedTitan;
+    std::vector<float> distTitan;
+    std::vector<float> rotSpeedTitan;
+    std::vector<float> scaleTitan;
+    glm::mat4 tmatTitan;
+    glm::mat4 rmatTitan;
+    glm::mat4 smatTitan;
+    glm::vec3 rotVectorTitan;
 
     std::vector<float> speedU;
     std::vector<float> distU;

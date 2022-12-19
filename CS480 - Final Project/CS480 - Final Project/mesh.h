@@ -19,6 +19,8 @@ public:
 
     void setSpeed(glm::vec3 spd) { m_speed = spd; };
     void setRotation(float rot) { angle = rot; };
+    void setRoll(float rot) { roll = rot; };
+    void setPitch(float rot) { pitch = rot; };
     float getAngle() { return angle; };
 
     glm::mat4 GetModel();
@@ -28,7 +30,9 @@ public:
 
     bool hasTex;
     GLuint getTextureID() { return m_texture->getTextureID(); }
-    float angle;
+    float angle = 0.0;
+    float roll = 0.0;
+    float pitch = 0.0;
 
 
 

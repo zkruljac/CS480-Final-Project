@@ -74,6 +74,8 @@ void Mesh::Update(unsigned int dt)
 	//model = inmodel;
 	model = glm::translate(model, m_speed);
 	model *= glm::rotate(glm::mat4(1.0f), angle, glm::vec3(0, 1.0f, .0f));
+	model *= glm::rotate(glm::mat4(1.0f), roll, glm::vec3(0, 0, 1.0f));
+	model *= glm::rotate(glm::mat4(1.0f), pitch, glm::vec3(1.0f, 0, 0));
 
 }
 

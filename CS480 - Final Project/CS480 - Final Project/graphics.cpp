@@ -101,8 +101,12 @@ bool Graphics::Initialize(int width, int height)
 	// Venus
 	m_venus = new Sphere(48, "Planetary Textures\\VenusClouds.jpg");
 
-	// Venus
+	// Mars
 	m_mars = new Sphere(48, "Planetary Textures\\Mars.jpg");
+	// Deimos
+	m_deimos = new Sphere(12, "Planetary Textures\\Ceres.jpg");
+	// Phobos
+	m_phobos = new Sphere(24, "Planetary Textures\\Haumea.jpg");
 
 	// Venus
 	m_jupiter = new Sphere(48, "Planetary Textures\\Jupiter.jpg");
@@ -145,12 +149,24 @@ void Graphics::HierarchicalUpdate2(double dt) {
 	//planet parameters
 	speedS = { 0.0, 0.0, 0.0 };
 	distS = { 0., 0., 0. };
-	rotSpeedS = { 0.05f, 0.0f, 0.05 };
-	scaleS = { 8.f, 8.f, 8.f };
+	rotSpeedS = { 0.02f, 0.0f, 0.02 };
+	scaleS = { 10.f, 10.f, 10.f };
 	rotVectorS = glm::vec3(.0, 1.0, 0.0);
 
-	speedP = { -0.04, 0.0, -0.04 };
-	distP = { 140., 0., 140. };
+	speedMe = { -.01, 0.0, -.01 };
+	distMe = { 80.0, 0.0, 80.0 };
+	rotSpeedMe = { .04f, 0.0f, .04f };
+	scaleMe = { 1.2f, 1.2f, 1.2f };
+	rotVectorMe = glm::vec3(0.0, 1.0, 0.0);
+
+	speedV = { -.006, 0.0, -.006 };
+	distV = { 160.0, 0.0, 160.0 };
+	rotSpeedV = { -0.25f, -0.f, -0.25f };
+	scaleV = { 1.8f, 1.8f, 1.8f };
+	rotVectorV = glm::vec3(0.0, 1.0, 0.0);
+
+	speedP = { -0.004, 0.0, -0.004 };
+	distP = { 280., 0., 280. };
 	rotSpeedP = { 0.5f, 0.0f, 0.5f };
 	scaleP = { 2.f, 2.f, 2.f };
 	rotVectorP = glm::vec3(.3, 1.0, 0.0);
@@ -161,44 +177,44 @@ void Graphics::HierarchicalUpdate2(double dt) {
 	scaleP1 = { 1.0f, 1.0f, 1.0f };
 	rotVectorP1 = glm::vec3(.5, 1.0, 0.0);
 
-	speedMe = { -.1, 0.0, -.1 };
-	distMe = { 40.0, 0.0, 40.0 };
-	rotSpeedMe = { .04f, 0.0f, .04f };
-	scaleMe = { 1.2f, 1.2f, 1.2f };
-	rotVectorMe = glm::vec3(0.0, 1.0, 0.0);
-
-	speedV = { -.06, 0.0, -.06 };
-	distV = { 80.0, 0.0, 80.0 };
-	rotSpeedV = { -0.25f, -0.f, -0.25f };
-	scaleV = { 1.8f, 1.8f, 1.8f };
-	rotVectorV = glm::vec3(0.0, 1.0, 0.0);
-
-	speedMa = { -.02, 0.0, -.02 };
-	distMa = { 180.0, 0.0, 180.0 };
+	speedMa = { -.002, 0.0, -.002 };
+	distMa = { 360.0, 0.0, 360.0 };
 	rotSpeedMa = { 0.5f, 0.f, 0.5f };
 	scaleMa = { 1.4f, 1.4f, 1.4f };
 	rotVectorMa = glm::vec3(0.0, 1.0, 0.0);
 
-	speedJ = { -.01, 0.0, -.01 };
-	distJ = { 300.0, 0.0, 300.0 };
+	speedDei = { -.2, -0.1, -.25 };
+	distDei = { 8.0, 1.0, 8.0 };
+	rotSpeedDei = { 0.2f, 0.f, 0.2f };
+	scaleDei = { 0.3f, 0.4f, 0.2f };
+	rotVectorDei = glm::vec3(0.0, 1.0, 0.5);
+
+	speedPhob = { -.5, -0.1, -.5 };
+	distPhob = { 5.0, 1.0, 5.0 };
+	rotSpeedPhob = { 0.5f, 0.f, 0.5f };
+	scalePhob = { 0.5f, 0.4f, 0.5f };
+	rotVectorPhob = glm::vec3(0.0, 1.0, 0.2);
+
+	speedJ = { -.001, 0.0, -.001 };
+	distJ = { 600.0, 0.0, 600.0 };
 	rotSpeedJ = { .1f, .0f, .1f };
 	scaleJ = { 6.f, 6.f, 6.f };
 	rotVectorJ = glm::vec3(0.0, 1.0, 0.0);
 
-	speedSa = { -.005, 0.0, -.005 };
-	distSa = { 400.0, 0.0, 400.0 };
+	speedSa = { -.0005, 0.0, -.0005 };
+	distSa = { 800.0, 0.0, 800.0 };
 	rotSpeedSa = { .2f, .2f, .2f };
 	scaleSa = { 5.0f, 5.0f, 5.0f };
 	rotVectorSa = glm::vec3(0.0, 1.0, 0.1);
 
-	speedU = { -.0025, 0.0, -.0025 };
-	distU = { 700.0, 0.0, 700.0 };
+	speedU = { -.00025, 0.0, -.00025 };
+	distU = { 1200.0, 0.0, 1200.0 };
 	rotSpeedU = { .1f, .1f, .1f };
 	scaleU = { 3.0f, 3.0f, 3.0f };
 	rotVectorU = glm::vec3(1.0, 0.1, 0.0);
 
-	speedN = { -.001, 0.0, -.001 };
-	distN = { 850.0, 0.0, 850.0 };
+	speedN = { -.0001, 0.0, -.0001 };
+	distN = { 1600.0, 0.0, 1600.0 };
 	rotSpeedN = { .1f, .1f, .1f };
 	scaleN = { 2.8f, 2.8f, 2.8f };
 	rotVectorN = glm::vec3(.05, 1.0, 0.0);
@@ -223,6 +239,10 @@ void Graphics::HierarchicalUpdate2(double dt) {
 
 	ComputeTransforms(dt, speedMa, distMa, rotSpeedMa, rotVectorMa, scaleMa, tmatMa, rmatMa, smatMa);
 	m_mars->Update(tmatMa * rmatMa * smatMa);
+	ComputeTransforms(dt, speedDei, distDei, rotSpeedDei, rotVectorDei, scaleDei, tmatDei, rmatDei, smatDei);
+	m_deimos->Update(tmatMa * tmatDei* rmatDei* smatDei);
+	ComputeTransforms(dt, speedPhob, distPhob, rotSpeedPhob, rotVectorPhob, scalePhob, tmatPhob, rmatPhob, smatPhob);
+	m_phobos->Update(tmatMa * tmatPhob * rmatPhob* smatPhob);
 
 	ComputeTransforms(dt, speedJ, distJ, rotSpeedJ, rotVectorJ, scaleJ, tmatJ, rmatJ, smatJ);
 	m_jupiter->Update(tmatJ * rmatJ * smatJ);
@@ -284,8 +304,21 @@ void Graphics::Render()
 		LightSpecular[i] = m_light->m_lightSpecular[i];
 		LightPosition[i] = m_light->m_lightPositionViewSpace[i];
 	}
+<<<<<<< Updated upstream
 
 	m_light->SetViewSpacePosition(m_camera->GetView());
+=======
+	
+	/*GLfloat light_ambient[] = {0.0, 0.0, 0.0, 1.0};
+	GLfloat light_diffuse[] = { 1.0, 1.0, 1.0, 1.0 };
+	GLfloat light_specular[] = { 1.0, 1.0, 1.0, 1.0 };
+	GLfloat light_position[] = { 0.0, 0.0, 0.0, 0.0 };
+
+	glLightfv(GL_LIGHT0, GL_AMBIENT, light_ambient);
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
+	glLightfv(GL_LIGHT0, GL_SPECULAR, light_specular);
+	glLightfv(GL_LIGHT0, GL_POSITION, light_position);*/
+>>>>>>> Stashed changes
 
 	glProgramUniform4fv(m_shader->GetShaderProgram(), globalAmbientLocation, 1, GlobalAmbient);
 	glProgramUniform4fv(m_shader->GetShaderProgram(), lightAmbientLocation, 1, LightAmbient);
@@ -294,7 +327,7 @@ void Graphics::Render()
 	glProgramUniform3fv(m_shader->GetShaderProgram(), lightPositionLocation, 1, LightPosition);
 
 	//Materials
-	float MaterialAmbient[4] = { 1.0, 1.0, 1.0, 1.0 };
+	float MaterialAmbient[4] = {1.0, 1.0, 1.0, 1.0};
 	float MaterialDiffuse[4] = { 1.0, 1.0, 1.0, 1.0 };
 	float MaterialSpecular[4] = { 1.0, 1.0, 1.0, 1.0 };
 	float MaterialShininess = 20.0;
@@ -304,6 +337,16 @@ void Graphics::Render()
 		MaterialDiffuse[i] = m_light->m_lightDiffuse[i];
 		MaterialSpecular[i] = m_light->m_lightSpecular[i];
 	}
+<<<<<<< Updated upstream
+=======
+
+	for (int i = 0; i < 3; i++) {
+		MaterialAmbient[i] = 1.0;
+		MaterialSpecular[i] = 1.0;
+		MaterialShininess = 20;
+	}
+
+>>>>>>> Stashed changes
 	if (m_mesh != NULL) {
 		glUniform1i(m_hasTexture, false);
 		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_mesh->GetModel()));
@@ -327,11 +370,19 @@ void Graphics::Render()
 		}
 	}
 
+<<<<<<< Updated upstream
 	/*if (m_pyramid != NULL) {
 		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_pyramid->GetModel()));
 		m_pyramid->Render(m_positionAttrib, m_colorAttrib);
 	}*/
 
+=======
+	/*for (int i = 0; i < 3; i++) {
+		MaterialAmbient[i] = 1;
+		MaterialSpecular[i] = .9;
+		MaterialShininess = 50;
+	}*/
+>>>>>>> Stashed changes
 	if (m_sun != NULL) {
 		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_sun->GetModel()));
 		// Material
@@ -352,6 +403,15 @@ void Graphics::Render()
 		}
 	}
 
+<<<<<<< Updated upstream
+=======
+	/*for (int i = 0; i < 3; i++) {
+		MaterialAmbient[i] = .3;
+		//MaterialDiffuse[i] = 
+		MaterialSpecular[i] = .4;
+		MaterialShininess = 10;
+	}*/
+>>>>>>> Stashed changes
 	if (m_skybox != NULL) {
 		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_skybox->GetModel()));
 		// Material
@@ -371,6 +431,16 @@ void Graphics::Render()
 			m_skybox->Render(m_positionAttrib, m_colorAttrib, m_tcAttrib, m_hasTexture);
 		}
 	}
+<<<<<<< Updated upstream
+=======
+	
+	/*//MaterialAmbient[4] = {1, 1, 1};
+	for (int i = 0; i < 3; i++) {
+		MaterialAmbient[i] = .5;
+		MaterialSpecular[i] = .5;
+		MaterialShininess = 20;
+	}*/
+>>>>>>> Stashed changes
 
 	if (m_earth != NULL) {
 		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_earth->GetModel()));
@@ -473,6 +543,47 @@ void Graphics::Render()
 			m_mars->Render(m_positionAttrib, m_colorAttrib, m_tcAttrib, m_hasTexture);
 		}
 	}
+
+	if (m_deimos != NULL) {
+		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_deimos->GetModel()));
+		// Material
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialAmbientLocation, 1, MaterialAmbient);
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialDiffuseLocation, 1, MaterialDiffuse);
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialSpecularLocation, 1, MaterialSpecular);
+		glProgramUniform1f(m_shader->GetShaderProgram(), materialShininessLocation, MaterialShininess);
+		if (m_deimos->hasTex) {
+			glActiveTexture(GL_TEXTURE0);
+			glBindTexture(GL_TEXTURE_2D, m_deimos->getTextureID());
+			GLuint sampler = m_shader->GetUniformLocation("sp");
+			if (sampler == INVALID_UNIFORM_LOCATION)
+			{
+				printf("Sampler Not found not found\n");
+			}
+			glUniform1i(sampler, 0);
+			m_deimos->Render(m_positionAttrib, m_colorAttrib, m_tcAttrib, m_hasTexture);
+		}
+	}
+
+	if (m_phobos != NULL) {
+		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_phobos->GetModel()));
+		// Material
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialAmbientLocation, 1, MaterialAmbient);
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialDiffuseLocation, 1, MaterialDiffuse);
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialSpecularLocation, 1, MaterialSpecular);
+		glProgramUniform1f(m_shader->GetShaderProgram(), materialShininessLocation, MaterialShininess);
+		if (m_phobos->hasTex) {
+			glActiveTexture(GL_TEXTURE0);
+			glBindTexture(GL_TEXTURE_2D, m_phobos->getTextureID());
+			GLuint sampler = m_shader->GetUniformLocation("sp");
+			if (sampler == INVALID_UNIFORM_LOCATION)
+			{
+				printf("Sampler Not found not found\n");
+			}
+			glUniform1i(sampler, 0);
+			m_phobos->Render(m_positionAttrib, m_colorAttrib, m_tcAttrib, m_hasTexture);
+		}
+	}
+
 
 	if (m_jupiter != NULL) {
 		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_jupiter->GetModel()));
