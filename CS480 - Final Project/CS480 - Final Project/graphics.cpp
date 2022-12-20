@@ -87,16 +87,16 @@ bool Graphics::Initialize(int width, int height)
 	m_skybox = new Sphere(64, "Planetary Textures\\2k_stars_milky_way.jpg");
 
 	// The Sun
-	m_sun = new Sphere(64, "Planetary Textures\\2k_sun.jpg");
+	m_sun = new Sphere(128, "Planetary Textures\\2k_sun.jpg");
 
 	// The Earth
-	m_earth = new Sphere(48, "Planetary Textures\\2k_earth_daymap.jpg");
+	m_earth = new Sphere(48, "Planetary Textures\\2k_earth_daymap.jpg", "Planetary Textures\\2k_earth_daymap-n.jpg");
 	
 	// The moon
 	m_luna = new Sphere(48, "Planetary Textures\\2k_moon.jpg");
 
 	// Mercury
-	m_mercury = new Sphere(48, "Planetary Textures\\Mercury.jpg");
+	m_mercury = new Sphere(48, "Planetary Textures\\Mercury.jpg", "Planetary Textures\\Mercury-n.jpg");
 
 	// Venus
 	m_venus = new Sphere(48, "Planetary Textures\\VenusClouds.jpg");
@@ -347,9 +347,6 @@ void Graphics::HierarchicalUpdate2(double dt) {
 }
 
 
-
-
-
 void Graphics::ComputeTransforms(double dt, std::vector<float> speed, std::vector<float> dist,
 	std::vector<float> rotSpeed, glm::vec3 rotVector, std::vector<float> scale, glm::mat4& tmat, glm::mat4& rmat, glm::mat4& smat)
 {
@@ -384,6 +381,8 @@ void Graphics::Render()
 		LightSpecular[i] = m_light->m_lightSpecular[i];
 		LightPosition[i] = m_light->m_lightPositionViewSpace[i];
 	}
+
+	m_light->SetViewSpacePosition(m_camera->GetView());
 	
 	/*GLfloat light_ambient[] = {0.0, 0.0, 0.0, 1.0};
 	GLfloat light_diffuse[] = { 1.0, 1.0, 1.0, 1.0 };
@@ -403,7 +402,7 @@ void Graphics::Render()
 
 	//Materials
 	float MaterialAmbient[4] = {1.0, 1.0, 1.0, 1.0};
-	float MaterialDiffuse[4] = { 1.0, 1.0, 1.0, 1.0 };
+	float MaterialDiffuse[4] = { .5, .5, .5, 1.0 };
 	float MaterialSpecular[4] = { 1.0, 1.0, 1.0, 1.0 };
 	float MaterialShininess = 20.0;
 
@@ -412,17 +411,17 @@ void Graphics::Render()
 		MaterialDiffuse[i] = m_light->m_lightDiffuse[i];
 		MaterialSpecular[i] = m_light->m_lightSpecular[i];
 	}
-
+	/*
 	for (int i = 0; i < 3; i++) {
 		MaterialAmbient[i] = 1.0;
 		MaterialSpecular[i] = 1.0;
 		MaterialShininess = 20;
 	}
-
+	*/
 	if (m_mesh != NULL) {
 		glUniform1i(m_hasTexture, false);
 		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_mesh->GetModel()));
-
+		glUniformMatrix3fv(m_normalMatrix, 1, GL_FALSE, glm::value_ptr(glm::transpose(glm::inverse(glm::mat3(m_camera->GetView() * m_mesh->GetModel())))));
 		// Material
 		glProgramUniform4fv(m_shader->GetShaderProgram(), materialAmbientLocation, 1, MaterialAmbient);
 		glProgramUniform4fv(m_shader->GetShaderProgram(), materialDiffuseLocation, 1, MaterialDiffuse);
@@ -449,6 +448,8 @@ void Graphics::Render()
 	}*/
 	if (m_sun != NULL) {
 		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_sun->GetModel()));
+		glUniformMatrix3fv(m_normalMatrix, 1, GL_FALSE, glm::value_ptr(glm::transpose(glm::inverse(glm::mat3(m_camera->GetView() * m_sun->GetModel())))));
+
 		// Material
 		glProgramUniform4fv(m_shader->GetShaderProgram(), materialAmbientLocation, 1, MaterialAmbient);
 		glProgramUniform4fv(m_shader->GetShaderProgram(), materialDiffuseLocation, 1, MaterialDiffuse);
@@ -463,16 +464,26 @@ void Graphics::Render()
 				printf("Sampler Not found not found\n");
 			}
 			glUniform1i(sampler, 0);
-			m_sun->Render(m_positionAttrib, m_colorAttrib, m_tcAttrib, m_hasTexture);
 		}
+		if (m_sun->hasNorm) {
+			glActiveTexture(GL_TEXTURE1);
+			glBindTexture(GL_TEXTURE_2D, m_sun->getNormalID());
+			GLuint sampler = m_shader->GetUniformLocation("samp1");
+			if (sampler == INVALID_UNIFORM_LOCATION)
+			{
+				printf("Sampler Not found not found\n");
+			}
+			glUniform1i(sampler, 1);
+		}
+		m_sun->Render(m_positionAttrib, m_colorAttrib, m_tcAttrib, m_hasTexture);
 	}
 
-	/*for (int i = 0; i < 3; i++) {
+	for (int i = 0; i < 3; i++) {
 		MaterialAmbient[i] = .3;
-		//MaterialDiffuse[i] = 
+		MaterialDiffuse[i] = .5;
 		MaterialSpecular[i] = .4;
 		MaterialShininess = 10;
-	}*/
+	}
 	if (m_skybox != NULL) {
 		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_skybox->GetModel()));
 		// Material
@@ -493,15 +504,18 @@ void Graphics::Render()
 		}
 	}
 	
-	/*//MaterialAmbient[4] = {1, 1, 1};
+	
+	MaterialSpecular[0] = 1;
+	MaterialSpecular[1] = 1;
+	MaterialSpecular[2] = 1;
+	MaterialShininess = 20.0;
 	for (int i = 0; i < 3; i++) {
-		MaterialAmbient[i] = .5;
-		MaterialSpecular[i] = .5;
-		MaterialShininess = 20;
-	}*/
+		MaterialAmbient[i] = 1;
+	}
 
 	if (m_earth != NULL) {
 		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_earth->GetModel()));
+		glUniformMatrix3fv(m_normalMatrix, 1, GL_FALSE, glm::value_ptr(glm::transpose(glm::inverse(glm::mat3(m_camera->GetView() * m_earth->GetModel())))));
 		// Material
 		glProgramUniform4fv(m_shader->GetShaderProgram(), materialAmbientLocation, 1, MaterialAmbient);
 		glProgramUniform4fv(m_shader->GetShaderProgram(), materialDiffuseLocation, 1, MaterialDiffuse);
@@ -516,8 +530,18 @@ void Graphics::Render()
 				printf("Sampler Not found not found\n");
 			}
 			glUniform1i(sampler, 0);
-			m_earth->Render(m_positionAttrib, m_colorAttrib, m_tcAttrib, m_hasTexture);
 		}
+		if (m_earth->hasNorm) {
+			glActiveTexture(GL_TEXTURE1);
+			glBindTexture(GL_TEXTURE_2D, m_earth->getNormalID());
+			GLuint sampler = m_shader->GetUniformLocation("samp1");
+			if (sampler == INVALID_UNIFORM_LOCATION)
+			{
+				printf("Sampler Not found not found\n");
+			}
+			glUniform1i(sampler, 1);
+		}
+		m_earth->Render(m_positionAttrib, m_colorAttrib, m_tcAttrib, m_hasTexture, m_hasNormal);
 	}
 
 
@@ -544,6 +568,7 @@ void Graphics::Render()
 
 	if (m_mercury != NULL) {
 		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_mercury->GetModel()));
+		glUniformMatrix3fv(m_normalMatrix, 1, GL_FALSE, glm::value_ptr(glm::transpose(glm::inverse(glm::mat3(m_camera->GetView()* m_mercury->GetModel())))));
 		// Material
 		glProgramUniform4fv(m_shader->GetShaderProgram(), materialAmbientLocation, 1, MaterialAmbient);
 		glProgramUniform4fv(m_shader->GetShaderProgram(), materialDiffuseLocation, 1, MaterialDiffuse);
@@ -558,8 +583,18 @@ void Graphics::Render()
 				printf("Sampler Not found not found\n");
 			}
 			glUniform1i(sampler, 0);
-			m_mercury->Render(m_positionAttrib, m_colorAttrib, m_tcAttrib, m_hasTexture);
 		}
+		if (m_mercury->hasNorm) {
+			glActiveTexture(GL_TEXTURE1);
+			glBindTexture(GL_TEXTURE_2D, m_mercury->getNormalID());
+			GLuint sampler = m_shader->GetUniformLocation("samp1");
+			if (sampler == INVALID_UNIFORM_LOCATION)
+			{
+				printf("Sampler Not found not found\n");
+			}
+			glUniform1i(sampler, 1);
+		}
+		m_mercury->Render(m_positionAttrib, m_colorAttrib, m_tcAttrib, m_hasTexture);
 	}
 
 	if (m_venus != NULL) {

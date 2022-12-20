@@ -11,12 +11,13 @@ public:
 
     void Render(GLint positionAttribLoc, GLint colorAttribLoc);
     void Render(GLint positionAttribLoc, GLint colorAttribLoc, GLint tcAttribLoc, GLint hasTex);
-
+    void Render(GLint positionAttribLoc, GLint colorAttribLoc, GLint tcAttribLoc, GLint hasTex, GLint hasNorm);
     glm::mat4 GetModel() { return model; }
     void Update(glm::mat4 matModel);
 
     Sphere(int prec);
     Sphere(int prec, const char* fname);
+    Sphere(int prec, const char* fname, const char* nfname);
 
     int getNumVertices();
     int getNumIndices();
@@ -25,9 +26,12 @@ public:
     std::vector<glm::vec2> getTexCoords();
     std::vector<glm::vec3> getNormals();
 
+    //GLuint loadTexture(const char* textureFile, int textureType);
+    GLuint getNormalID() { return m_normal->getTextureID(); }
     GLuint getTextureID() { return m_texture->getTextureID(); }
 
     bool hasTex;
+    bool hasNorm;
 
 private:
     glm::vec3 pivotLocation;
@@ -37,6 +41,7 @@ private:
     GLuint VB;
     GLuint IB;
     Texture* m_texture;
+    Texture* m_normal;
 
 
     GLuint vao;

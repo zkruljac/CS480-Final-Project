@@ -48,10 +48,12 @@ class Graphics
     GLuint m_projectionMatrix;
     GLuint m_viewMatrix;
     GLuint m_modelMatrix;
+    GLuint m_normalMatrix;
     GLuint m_positionAttrib;
     GLuint m_colorAttrib;
     GLuint m_tcAttrib;
     GLuint m_hasTexture;
+    GLuint m_hasNormal;
    
     GLuint globalAmbientLocation;
     GLuint lightAmbientLocation;

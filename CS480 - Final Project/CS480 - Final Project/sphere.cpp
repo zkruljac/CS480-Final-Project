@@ -32,6 +32,25 @@ Sphere::Sphere(int prec, const char* fname) { // prec is precision, or number of
         hasTex = false;
 }
 
+Sphere::Sphere(int prec, const char* fname, const char* nfname) {
+    init(prec);
+    setupVertices();
+    setupBuffers();
+    setupModelMatrix(glm::vec3(0., 0., 0.), 0., 1.);
+
+    // load texture from file
+    m_texture = new Texture(fname);
+    m_normal = new Texture(nfname);
+
+    if (m_texture)
+        hasTex = true;
+    else
+        hasTex = false;
+    if (m_normal)
+        hasNorm = true;
+    else
+        hasNorm = false;
+}
 
 void Sphere::Render(GLint positionAttribLoc, GLint colorAttribLoc)
 {
@@ -92,6 +111,53 @@ void Sphere::Render(GLint posAttribLoc, GLint colAttribLoc, GLint tcAttribLoc, G
     // Disable vertex arrays
     glDisableVertexAttribArray(posAttribLoc);
     glDisableVertexAttribArray(colAttribLoc);
+    glDisableVertexAttribArray(tcAttribLoc);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+}
+
+void Sphere::Render(GLint positionAttribLoc, GLint colorAttribLoc, GLint tcAttribLoc, GLint hasTex, GLint hasNorm)
+{
+    glBindVertexArray(vao);
+    // Enable vertex attibute arrays for each vertex attrib
+    glEnableVertexAttribArray(positionAttribLoc);
+    glEnableVertexAttribArray(colorAttribLoc);
+    glEnableVertexAttribArray(tcAttribLoc);
+
+    // Bind your VBO
+    glBindBuffer(GL_ARRAY_BUFFER, VB);
+    //glBindBuffer(GL_ARRAY_BUFFER, NB);
+
+    // Set vertex attribute pointers to the load correct data. Update here to load the correct attributes.
+    glVertexAttribPointer(positionAttribLoc, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), 0);
+    glVertexAttribPointer(colorAttribLoc, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, normal));
+    glVertexAttribPointer(tcAttribLoc, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, texcoord));
+
+    // If has texture, set up texture unit(s): update here for texture rendering
+    if (m_texture != NULL) {
+        glUniform1i(hasTex, true);
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, m_texture->getTextureID());
+        if (m_normal != NULL) {                                   //normal logic gotten from note checks to see if there is normal
+            glUniform1i(hasNorm, true);
+            glActiveTexture(GL_TEXTURE1);
+            glBindTexture(GL_TEXTURE_2D, m_normal->getTextureID());
+        }
+        else glUniform1i(hasNorm, false);
+    }
+    else glUniform1i(hasTex, false);
+
+
+
+
+    // Bind your Element Array
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IB);
+
+    // Render
+    glDrawElements(GL_TRIANGLES, Indices.size(), GL_UNSIGNED_INT, 0);
+
+    // Disable vertex arrays
+    glDisableVertexAttribArray(positionAttribLoc);
+    glDisableVertexAttribArray(colorAttribLoc);
     glDisableVertexAttribArray(tcAttribLoc);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
