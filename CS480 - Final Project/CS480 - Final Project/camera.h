@@ -9,7 +9,7 @@ public:
     Camera();
     ~Camera();
     bool Initialize(int w, int h);
-    void Update(glm::mat4 model, glm::vec3, float, glm::mat4 planet);
+    void Update(glm::mat4 model, glm::vec3 translation, float rotation, glm::mat4 Sun, glm::mat4 Mercury, glm::mat4 Venus, glm::mat4 Earth, glm::mat4 Mars, glm::mat4 Jupiter, glm::mat4 Saturn, glm::mat4 Uranus, glm::mat4 Neptune, glm::mat4 Pluto);
     void setSpeed(glm::vec3 spd) { m_speed = spd; };
     void setRotation(float rot) { angle = rot; }
     void setAngles(float angX, float angY) { xpos = angX; ypos = angY; };
@@ -22,13 +22,28 @@ public:
     glm::vec3 dist = { 1.0, 0.0, 1.0 };
     float angle = 0.0f;
     void setViewState(bool state) { viewState = state; };
-    bool viewState;
+    bool getColState() { return colState; };
+    bool viewState = 0;
+    bool colState = 0;
+    bool changeState = 0;
 
     glm::vec3 Pscale;
     glm::quat Protation;
     glm::vec3 Pskew;
-    glm::vec3 Ptranslation;
     glm::vec4 Pperspective;
+
+    bool CollisionCheck(glm::vec3 translation, glm::vec3 Ptranslation, float rotation);
+
+    glm::vec3 Stranslation;
+    glm::vec3 Metranslation;
+    glm::vec3 Vtranslation;
+    glm::vec3 Etranslation;
+    glm::vec3 Matranslation;
+    glm::vec3 Jtranslation;
+    glm::vec3 Satranslation;
+    glm::vec3 Utranslation;
+    glm::vec3 Ntranslation;
+    glm::vec3 Plutranslation;
 
 private:
 

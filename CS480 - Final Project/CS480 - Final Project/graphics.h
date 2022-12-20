@@ -89,17 +89,41 @@ class Graphics
     Sphere* m_ceres;
 
     Sphere* m_saturn;
+    Sphere* m_ring;
     Sphere* m_titan;
+    Sphere* m_Smoon;
+    Sphere* m_Smoon2;
 
     Sphere* m_uranus;
+    Sphere* m_Umoon;
+    Sphere* m_Umoon2;
+
     Sphere* m_neptune;
+    Sphere* m_Nmoon;
+    Sphere* m_Nmoon2;
+
     Sphere* m_pluto;
+    Sphere* m_charon;
+
+    Sphere* m_haumea;
+    Sphere* m_eris;
 
     Object* m_object;
 
     Mesh* m_mesh;
 
-    glm::mat4 m_col;
+    glm::mat4 m_colS;
+    glm::mat4 m_colMe;
+    glm::mat4 m_colV;
+    glm::mat4 m_colE;
+    glm::mat4 m_colMa;
+    glm::mat4 m_colJ;
+    glm::mat4 m_colSa;
+    glm::mat4 m_colU;
+    glm::mat4 m_colN;
+    glm::mat4 m_colPlu;
+    glm::mat4 m_colCe;
+
 
 
     std::vector<float> speedS;
@@ -120,23 +144,23 @@ class Graphics
     glm::mat4 smatSB;
     glm::vec3 rotVectorSB;
 
-    std::vector<float> speedP;
-    std::vector<float> distP;
-    std::vector<float> rotSpeedP;
-    std::vector<float> scaleP;
-    glm::mat4 tmatP;
-    glm::mat4 rmatP;
-    glm::mat4 smatP;
-    glm::vec3 rotVectorP;
+    std::vector<float> speedE;
+    std::vector<float> distE;
+    std::vector<float> rotSpeedE;
+    std::vector<float> scaleE;
+    glm::mat4 tmatE;
+    glm::mat4 rmatE;
+    glm::mat4 smatE;
+    glm::vec3 rotVectorE;
 
-    std::vector<float> speedP1;
-    std::vector<float> distP1;
-    std::vector<float> rotSpeedP1;
-    std::vector<float> scaleP1;
-    glm::mat4 tmatP1;
-    glm::mat4 rmatP1;
-    glm::mat4 smatP1;
-    glm::vec3 rotVectorP1;
+    std::vector<float> speedL;
+    std::vector<float> distL;
+    std::vector<float> rotSpeedL;
+    std::vector<float> scaleL;
+    glm::mat4 tmatL;
+    glm::mat4 rmatL;
+    glm::mat4 smatL;
+    glm::vec3 rotVectorL;
 
     std::vector<float> speedM;
     std::vector<float> distM;
@@ -245,6 +269,9 @@ class Graphics
     glm::mat4 rmatSa;
     glm::mat4 smatSa;
     glm::vec3 rotVectorSa;
+
+    std::vector<float> scaleRing;
+    glm::mat4 smatRing;
 
     std::vector<float> speedTitan;
     std::vector<float> distTitan;

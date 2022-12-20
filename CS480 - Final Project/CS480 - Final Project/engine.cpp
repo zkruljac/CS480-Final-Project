@@ -104,7 +104,7 @@ void Engine::ProcessInput()
         m_graphics->getShip()->setSpeed(glm::vec3(0, 0, 10));
     if (glfwGetKey(m_window->getWindow(), GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)
     {
-        m_graphics->getShip()->setSpeed(glm::vec3(0, 0, 80));
+        m_graphics->getShip()->setSpeed(glm::vec3(0, 0, 300));
         m_graphics->getShip()->setRotation(xpos / 100000);
     }
     else
@@ -114,8 +114,9 @@ void Engine::ProcessInput()
         m_graphics->getShip()->setSpeed(glm::vec3(0., 0., 0.));
 
 
-
     if (glfwGetKey(m_window->getWindow(), GLFW_KEY_V) == GLFW_PRESS)
+        m_graphics->getCamera()->setViewState(1);
+    if (glfwGetKey(m_window->getWindow(), GLFW_KEY_B) == GLFW_PRESS)
         m_graphics->getCamera()->setViewState(0);
 
 

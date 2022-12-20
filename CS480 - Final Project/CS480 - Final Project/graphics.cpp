@@ -110,15 +110,30 @@ bool Graphics::Initialize(int width, int height)
 
 	// Venus
 	m_jupiter = new Sphere(48, "Planetary Textures\\Jupiter.jpg");
+	// Venus
+	m_ganymede = new Sphere(48, "Planetary Textures\\Mercury.jpg");
+	// Venus
+	m_callisto = new Sphere(48, "Planetary Textures\\Haumea.jpg");
+	// Venus
+	m_europa = new Sphere(48, "Planetary Textures\\Eris.jpg");
+	// Venus
+	m_io = new Sphere(48, "Planetary Textures\\Ceres.jpg");
 
 	// Saturn
 	m_saturn = new Sphere(48, "Planetary Textures\\Saturn.jpg");
+	// Saturn
+	m_ring = new Sphere(48, "Planetary Textures\\Saturn_ring.png");
+	// Saturn
+	m_titan = new Sphere(24, "Planetary Textures\\VenusClouds.jpg");
 
 	// Uranus
 	m_uranus = new Sphere(48, "Planetary Textures\\Uranus.jpg");
 
 	// Neptune
 	m_neptune = new Sphere(48, "Planetary Textures\\Neptune.jpg");
+
+	// Pluto
+	m_pluto = new Sphere(48, "Planetary Textures\\Ceres.jpg");
 
 	//enable depth testing
 	glEnable(GL_DEPTH_TEST);
@@ -160,22 +175,22 @@ void Graphics::HierarchicalUpdate2(double dt) {
 	rotVectorMe = glm::vec3(0.0, 1.0, 0.0);
 
 	speedV = { -.006, 0.0, -.006 };
-	distV = { 160.0, 0.0, 160.0 };
+	distV = { -160.0, 0.0, -160.0 };
 	rotSpeedV = { -0.25f, -0.f, -0.25f };
 	scaleV = { 1.8f, 1.8f, 1.8f };
 	rotVectorV = glm::vec3(0.0, 1.0, 0.0);
 
-	speedP = { -0.004, 0.0, -0.004 };
-	distP = { 280., 0., 280. };
-	rotSpeedP = { 0.5f, 0.0f, 0.5f };
-	scaleP = { 2.f, 2.f, 2.f };
-	rotVectorP = glm::vec3(.3, 1.0, 0.0);
+	speedE = { -0.004, 0.0, -0.004 };
+	distE = { 280., 0., 280. };
+	rotSpeedE = { 0.5f, 0.0f, 0.5f };
+	scaleE = { 2.f, 2.f, 2.f };
+	rotVectorE = glm::vec3(.3, 1.0, 0.0);
 
-	speedP1 = { -0.2, -0.2, -0.2 };
-	distP1 = { 24., 4., 24. };
-	rotSpeedP1 = { .125f, 0.0f, 0.125f };
-	scaleP1 = { 1.0f, 1.0f, 1.0f };
-	rotVectorP1 = glm::vec3(.5, 1.0, 0.0);
+	speedL = { -0.2, -0.2, -0.2 };
+	distL = { 24., 4., 24. };
+	rotSpeedL = { .125f, 0.0f, 0.125f };
+	scaleL = { 1.0f, 1.0f, 1.0f };
+	rotVectorL = glm::vec3(.5, 1.0, 0.0);
 
 	speedMa = { -.002, 0.0, -.002 };
 	distMa = { 360.0, 0.0, 360.0 };
@@ -186,38 +201,76 @@ void Graphics::HierarchicalUpdate2(double dt) {
 	speedDei = { -.2, -0.1, -.2 };
 	distDei = { 8.0, 1.0, 8.0 };
 	rotSpeedDei = { 0.2f, 0.f, 0.2f };
-	scaleDei = { 0.3f, 0.4f, 0.2f };
+	scaleDei = { 0.1f, 0.2f, 0.15f };
 	rotVectorDei = glm::vec3(0.0, 1.0, 0.5);
 
 	speedPhob = { -.5, -0.1, -.5 };
 	distPhob = { 5.0, 1.0, 5.0 };
 	rotSpeedPhob = { 0.5f, 0.f, 0.5f };
-	scalePhob = { 0.5f, 0.4f, 0.5f };
+	scalePhob = { 0.2f, 0.15f, 0.2f };
 	rotVectorPhob = glm::vec3(0.0, 1.0, 0.2);
 
 	speedJ = { -.001, 0.0, -.001 };
-	distJ = { 600.0, 0.0, 600.0 };
+	distJ = { -600.0, 0.0, -600.0 };
 	rotSpeedJ = { .1f, .0f, .1f };
 	scaleJ = { 6.f, 6.f, 6.f };
 	rotVectorJ = glm::vec3(0.0, 1.0, 0.0);
 
+	speedGany = { -.25, 0.0, -.25 };
+	distGany = { -20.0, 0.0, -20.0 };
+	rotSpeedGany = { .1f, .0f, .1f };
+	scaleGany = { 1.f, 1.f, 1.f };
+	rotVectorGany = glm::vec3(0.0, 1.0, 0.0);
+
+	speedCall = { -.1, 0.0, -.1 };
+	distCall = { -45.0, 0.0, -45.0 };
+	rotSpeedCall = { .1f, .0f, .1f };
+	scaleCall = { .7f, .7f, .7f };
+	rotVectorCall = glm::vec3(0.0, 1.0, 0.0);
+
+	speedEur = { -.15, 0.0, -.15 };
+	distEur = { 30.0, 0.0, 30.0 };
+	rotSpeedEur = { .1f, .0f, .1f };
+	scaleEur = { .6f, .6f, .6f };
+	rotVectorEur = glm::vec3(0.0, 1.0, 0.0);
+
+	speedIo = { -.3, 0.0, -.3 };
+	distIo = { -10.0, 0.0, -10.0 };
+	rotSpeedIo = { .5f, .0f, .5f };
+	scaleIo = { .5f, .5f, .5f };
+	rotVectorIo = glm::vec3(0.0, 1.0, 0.0);
+
 	speedSa = { -.0005, 0.0, -.0005 };
 	distSa = { 800.0, 0.0, 800.0 };
-	rotSpeedSa = { .2f, .2f, .2f };
+	rotSpeedSa = { .02f, .02f, .02f };
 	scaleSa = { 5.0f, 5.0f, 5.0f };
 	rotVectorSa = glm::vec3(0.0, 1.0, 0.1);
 
+	scaleRing = { 15.0f, .1f, 15.0f };
+
+	speedTitan = { -.1, -.1, -.1 };
+	distTitan = { 40.0, 5.0, 40.0 };
+	rotSpeedTitan = { .2f, .2f, .2f };
+	scaleTitan = { 1.3f, 1.3f, 1.3f };
+	rotVectorTitan = glm::vec3(0.0, 1.0, 0.1);
+
 	speedU = { -.00025, 0.0, -.00025 };
-	distU = { 1200.0, 0.0, 1200.0 };
+	distU = { -1100.0, 0.0, -1100.0 };
 	rotSpeedU = { .1f, .1f, .1f };
 	scaleU = { 3.0f, 3.0f, 3.0f };
 	rotVectorU = glm::vec3(1.0, 0.1, 0.0);
 
 	speedN = { -.0001, 0.0, -.0001 };
-	distN = { 1600.0, 0.0, 1600.0 };
+	distN = { 1400.0, 0.0, 1400.0 };
 	rotSpeedN = { .1f, .1f, .1f };
 	scaleN = { 2.8f, 2.8f, 2.8f };
 	rotVectorN = glm::vec3(.05, 1.0, 0.0);
+
+	speedPlu = { -.0001, 0.0, -.0001 };
+	distPlu = { 1500.0, 0.0, 1300.0 };
+	rotSpeedPlu = { .1f, .1f, .1f };
+	scalePlu = { 1.1f, 1.1f, 1.1f };
+	rotVectorPlu = glm::vec3(.05, 1.0, 0.0);
 
 	ComputeTransforms(dt, speedS, distS, rotSpeedS, rotVectorS, scaleS, tmatS, rmatS, smatS);
 	m_sun->Update(tmatS * rmatS * smatS);
@@ -225,11 +278,11 @@ void Graphics::HierarchicalUpdate2(double dt) {
 	ComputeTransforms(dt, speedSB, distSB, rotSpeedSB, rotVectorSB, scaleSB, tmatSB, rmatSB, smatSB);
 	m_skybox->Update(tmatSB* rmatSB * smatSB);
 
-	ComputeTransforms(dt, speedP, distP, rotSpeedP, rotVectorP, scaleP, tmatP, rmatP, smatP);
-	m_earth->Update(tmatP * rmatP * smatP);
+	ComputeTransforms(dt, speedE, distE, rotSpeedE, rotVectorE, scaleE, tmatE, rmatE, smatE);
+	m_earth->Update(tmatE * rmatE * smatE);
 
-	ComputeTransforms(dt, speedP1, distP1, rotSpeedP1, rotVectorP1, scaleP1, tmatP1, rmatP1, smatP1);
-	m_luna->Update(tmatP * tmatP1 * rmatP1 * smatP1);
+	ComputeTransforms(dt, speedL, distL, rotSpeedL, rotVectorL, scaleL, tmatL, rmatL, smatL);
+	m_luna->Update(tmatE * tmatL * rmatL * smatL);
 
 	ComputeTransforms(dt, speedMe, distMe, rotSpeedMe, rotVectorMe, scaleMe, tmatMe, rmatMe, smatMe);
 	m_mercury->Update(tmatMe * rmatMe * smatMe);
@@ -246,9 +299,22 @@ void Graphics::HierarchicalUpdate2(double dt) {
 
 	ComputeTransforms(dt, speedJ, distJ, rotSpeedJ, rotVectorJ, scaleJ, tmatJ, rmatJ, smatJ);
 	m_jupiter->Update(tmatJ * rmatJ * smatJ);
+	ComputeTransforms(dt, speedGany, distGany, rotSpeedGany, rotVectorGany, scaleGany, tmatGany, rmatGany, smatGany);
+	m_ganymede->Update(tmatJ* tmatGany* rmatGany* smatGany);
+	ComputeTransforms(dt, speedCall, distCall, rotSpeedCall, rotVectorCall, scaleCall, tmatCall, rmatCall, smatCall);
+	m_callisto->Update(tmatJ* tmatCall* rmatCall* smatCall);
+	ComputeTransforms(dt, speedEur, distEur, rotSpeedEur, rotVectorEur, scaleEur, tmatEur, rmatEur, smatEur);
+	m_europa->Update(tmatJ* tmatEur* rmatEur* smatEur);
+	ComputeTransforms(dt, speedIo, distIo, rotSpeedIo, rotVectorIo, scaleIo, tmatIo, rmatIo, smatIo);
+	m_io->Update(tmatJ* tmatIo* rmatIo* smatIo);
 
 	ComputeTransforms(dt, speedSa, distSa, rotSpeedSa, rotVectorSa, scaleSa, tmatSa, rmatSa, smatSa);
 	m_saturn->Update(tmatSa * rmatSa * smatSa);
+	ComputeTransforms(dt, speedSa, distSa, rotSpeedSa, rotVectorSa, scaleRing, tmatSa, rmatSa, smatRing);
+	m_ring->Update(tmatSa* rmatSa* smatRing);
+	ComputeTransforms(dt, speedTitan, distTitan, rotSpeedTitan, rotVectorTitan, scaleTitan, tmatTitan, rmatTitan, smatTitan);
+	m_titan->Update(tmatSa* tmatTitan* rmatTitan* smatTitan);
+
 
 	ComputeTransforms(dt, speedU, distU, rotSpeedU, rotVectorU, scaleU, tmatU, rmatU, smatU);
 	m_uranus->Update(tmatU * rmatU * smatU);
@@ -256,14 +322,28 @@ void Graphics::HierarchicalUpdate2(double dt) {
 	ComputeTransforms(dt, speedN, distN, rotSpeedN, rotVectorN, scaleN, tmatN, rmatN, smatN);
 	m_neptune->Update(tmatN* rmatN* smatN);
 
+	ComputeTransforms(dt, speedPlu, distPlu, rotSpeedPlu, rotVectorPlu, scalePlu, tmatPlu, rmatPlu, smatPlu);
+	m_pluto->Update(tmatPlu* rmatPlu* smatPlu);
+
 	//modelStack.push();
 
 	m_mesh->Update(dt);
 	m_ship = m_mesh->GetModel();
-	m_col = m_earth->GetModel();
+
+	m_colS = m_sun->GetModel();
+	m_colMe = m_mercury->GetModel();
+	m_colV = m_venus->GetModel();
+	m_colE = m_earth->GetModel();
+	m_colMa = m_mars->GetModel();
+	m_colJ = m_jupiter->GetModel();
+	m_colSa = m_saturn->GetModel();
+	m_colU = m_uranus->GetModel();
+	m_colN = m_neptune->GetModel();
+	m_colPlu = m_pluto->GetModel();
+
 	sAngle = m_mesh->getAngle();
 	glm::decompose(m_ship, scale, rotation, translation, skew, perspective);
-	m_camera->Update(m_ship, translation, sAngle, m_col);
+	m_camera->Update(m_ship, translation, sAngle, m_colS, m_colMe, m_colV, m_colE, m_colMa, m_colJ, m_colSa, m_colU, m_colN, m_colPlu);
 }
 
 
@@ -583,6 +663,86 @@ void Graphics::Render()
 		}
 	}
 
+		if (m_ganymede != NULL) {
+			glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_ganymede->GetModel()));
+			// Material
+			glProgramUniform4fv(m_shader->GetShaderProgram(), materialAmbientLocation, 1, MaterialAmbient);
+			glProgramUniform4fv(m_shader->GetShaderProgram(), materialDiffuseLocation, 1, MaterialDiffuse);
+			glProgramUniform4fv(m_shader->GetShaderProgram(), materialSpecularLocation, 1, MaterialSpecular);
+			glProgramUniform1f(m_shader->GetShaderProgram(), materialShininessLocation, MaterialShininess);
+			if (m_ganymede->hasTex) {
+				glActiveTexture(GL_TEXTURE0);
+				glBindTexture(GL_TEXTURE_2D, m_ganymede->getTextureID());
+				GLuint sampler = m_shader->GetUniformLocation("sp");
+				if (sampler == INVALID_UNIFORM_LOCATION)
+				{
+					printf("Sampler Not found not found\n");
+				}
+				glUniform1i(sampler, 0);
+				m_ganymede->Render(m_positionAttrib, m_colorAttrib, m_tcAttrib, m_hasTexture);
+			}
+		}
+
+		if (m_callisto != NULL) {
+			glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_callisto->GetModel()));
+			// Material
+			glProgramUniform4fv(m_shader->GetShaderProgram(), materialAmbientLocation, 1, MaterialAmbient);
+			glProgramUniform4fv(m_shader->GetShaderProgram(), materialDiffuseLocation, 1, MaterialDiffuse);
+			glProgramUniform4fv(m_shader->GetShaderProgram(), materialSpecularLocation, 1, MaterialSpecular);
+			glProgramUniform1f(m_shader->GetShaderProgram(), materialShininessLocation, MaterialShininess);
+			if (m_callisto->hasTex) {
+				glActiveTexture(GL_TEXTURE0);
+				glBindTexture(GL_TEXTURE_2D, m_callisto->getTextureID());
+				GLuint sampler = m_shader->GetUniformLocation("sp");
+				if (sampler == INVALID_UNIFORM_LOCATION)
+				{
+					printf("Sampler Not found not found\n");
+				}
+				glUniform1i(sampler, 0);
+				m_callisto->Render(m_positionAttrib, m_colorAttrib, m_tcAttrib, m_hasTexture);
+			}
+		}
+
+		if (m_europa != NULL) {
+			glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_europa->GetModel()));
+			// Material
+			glProgramUniform4fv(m_shader->GetShaderProgram(), materialAmbientLocation, 1, MaterialAmbient);
+			glProgramUniform4fv(m_shader->GetShaderProgram(), materialDiffuseLocation, 1, MaterialDiffuse);
+			glProgramUniform4fv(m_shader->GetShaderProgram(), materialSpecularLocation, 1, MaterialSpecular);
+			glProgramUniform1f(m_shader->GetShaderProgram(), materialShininessLocation, MaterialShininess);
+			if (m_europa->hasTex) {
+				glActiveTexture(GL_TEXTURE0);
+				glBindTexture(GL_TEXTURE_2D, m_europa->getTextureID());
+				GLuint sampler = m_shader->GetUniformLocation("sp");
+				if (sampler == INVALID_UNIFORM_LOCATION)
+				{
+					printf("Sampler Not found not found\n");
+				}
+				glUniform1i(sampler, 0);
+				m_europa->Render(m_positionAttrib, m_colorAttrib, m_tcAttrib, m_hasTexture);
+			}
+		}
+
+		if (m_io != NULL) {
+			glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_io->GetModel()));
+			// Material
+			glProgramUniform4fv(m_shader->GetShaderProgram(), materialAmbientLocation, 1, MaterialAmbient);
+			glProgramUniform4fv(m_shader->GetShaderProgram(), materialDiffuseLocation, 1, MaterialDiffuse);
+			glProgramUniform4fv(m_shader->GetShaderProgram(), materialSpecularLocation, 1, MaterialSpecular);
+			glProgramUniform1f(m_shader->GetShaderProgram(), materialShininessLocation, MaterialShininess);
+			if (m_io->hasTex) {
+				glActiveTexture(GL_TEXTURE0);
+				glBindTexture(GL_TEXTURE_2D, m_io->getTextureID());
+				GLuint sampler = m_shader->GetUniformLocation("sp");
+				if (sampler == INVALID_UNIFORM_LOCATION)
+				{
+					printf("Sampler Not found not found\n");
+				}
+				glUniform1i(sampler, 0);
+				m_io->Render(m_positionAttrib, m_colorAttrib, m_tcAttrib, m_hasTexture);
+			}
+		}
+
 	if (m_saturn != NULL) {
 		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_saturn->GetModel()));
 		// Material
@@ -602,6 +762,66 @@ void Graphics::Render()
 			m_saturn->Render(m_positionAttrib, m_colorAttrib, m_tcAttrib, m_hasTexture);
 		}
 	}
+
+		if (m_ring != NULL) {
+			glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_ring->GetModel()));
+			// Material
+			glProgramUniform4fv(m_shader->GetShaderProgram(), materialAmbientLocation, 1, MaterialAmbient);
+			glProgramUniform4fv(m_shader->GetShaderProgram(), materialDiffuseLocation, 1, MaterialDiffuse);
+			glProgramUniform4fv(m_shader->GetShaderProgram(), materialSpecularLocation, 1, MaterialSpecular);
+			glProgramUniform1f(m_shader->GetShaderProgram(), materialShininessLocation, MaterialShininess);
+			if (m_ring->hasTex) {
+				glActiveTexture(GL_TEXTURE0);
+				glBindTexture(GL_TEXTURE_2D, m_ring->getTextureID());
+				GLuint sampler = m_shader->GetUniformLocation("sp");
+				if (sampler == INVALID_UNIFORM_LOCATION)
+				{
+					printf("Sampler Not found not found\n");
+				}
+				glUniform1i(sampler, 0);
+				m_ring->Render(m_positionAttrib, m_colorAttrib, m_tcAttrib, m_hasTexture);
+			}
+		}
+
+		if (m_titan != NULL) {
+			glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_titan->GetModel()));
+			// Material
+			glProgramUniform4fv(m_shader->GetShaderProgram(), materialAmbientLocation, 1, MaterialAmbient);
+			glProgramUniform4fv(m_shader->GetShaderProgram(), materialDiffuseLocation, 1, MaterialDiffuse);
+			glProgramUniform4fv(m_shader->GetShaderProgram(), materialSpecularLocation, 1, MaterialSpecular);
+			glProgramUniform1f(m_shader->GetShaderProgram(), materialShininessLocation, MaterialShininess);
+			if (m_titan->hasTex) {
+				glActiveTexture(GL_TEXTURE0);
+				glBindTexture(GL_TEXTURE_2D, m_titan->getTextureID());
+				GLuint sampler = m_shader->GetUniformLocation("sp");
+				if (sampler == INVALID_UNIFORM_LOCATION)
+				{
+					printf("Sampler Not found not found\n");
+				}
+				glUniform1i(sampler, 0);
+				m_titan->Render(m_positionAttrib, m_colorAttrib, m_tcAttrib, m_hasTexture);
+			}
+		}
+
+		if (m_Smoon != NULL) {
+			glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_Smoon->GetModel()));
+			// Material
+			glProgramUniform4fv(m_shader->GetShaderProgram(), materialAmbientLocation, 1, MaterialAmbient);
+			glProgramUniform4fv(m_shader->GetShaderProgram(), materialDiffuseLocation, 1, MaterialDiffuse);
+			glProgramUniform4fv(m_shader->GetShaderProgram(), materialSpecularLocation, 1, MaterialSpecular);
+			glProgramUniform1f(m_shader->GetShaderProgram(), materialShininessLocation, MaterialShininess);
+			if (m_Smoon->hasTex) {
+				glActiveTexture(GL_TEXTURE0);
+				glBindTexture(GL_TEXTURE_2D, m_Smoon->getTextureID());
+				GLuint sampler = m_shader->GetUniformLocation("sp");
+				if (sampler == INVALID_UNIFORM_LOCATION)
+				{
+					printf("Sampler Not found not found\n");
+				}
+				glUniform1i(sampler, 0);
+				m_Smoon->Render(m_positionAttrib, m_colorAttrib, m_tcAttrib, m_hasTexture);
+			}
+		}
 
 	if (m_uranus != NULL) {
 		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_uranus->GetModel()));
@@ -640,6 +860,26 @@ void Graphics::Render()
 			}
 			glUniform1i(sampler, 0);
 			m_neptune->Render(m_positionAttrib, m_colorAttrib, m_tcAttrib, m_hasTexture);
+		}
+	}
+
+	if (m_pluto != NULL) {
+		glUniformMatrix4fv(m_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_pluto->GetModel()));
+		// Material
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialAmbientLocation, 1, MaterialAmbient);
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialDiffuseLocation, 1, MaterialDiffuse);
+		glProgramUniform4fv(m_shader->GetShaderProgram(), materialSpecularLocation, 1, MaterialSpecular);
+		glProgramUniform1f(m_shader->GetShaderProgram(), materialShininessLocation, MaterialShininess);
+		if (m_pluto->hasTex) {
+			glActiveTexture(GL_TEXTURE0);
+			glBindTexture(GL_TEXTURE_2D, m_pluto->getTextureID());
+			GLuint sampler = m_shader->GetUniformLocation("sp");
+			if (sampler == INVALID_UNIFORM_LOCATION)
+			{
+				printf("Sampler Not found not found\n");
+			}
+			glUniform1i(sampler, 0);
+			m_pluto->Render(m_positionAttrib, m_colorAttrib, m_tcAttrib, m_hasTexture);
 		}
 	}
 

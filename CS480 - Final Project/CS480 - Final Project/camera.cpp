@@ -35,23 +35,59 @@ bool Camera::Initialize(int w, int h)
 	return true;
 }
 
-void Camera::Update(glm::mat4 model, glm::vec3 translation, float rotation, glm::mat4 planet)
+void Camera::Update(glm::mat4 model, glm::vec3 translation, float rotation, glm::mat4 Sun, glm::mat4 Mercury, glm::mat4 Venus, glm::mat4 Earth, glm::mat4 Mars, glm::mat4 Jupiter, glm::mat4 Saturn, glm::mat4 Uranus, glm::mat4 Neptune, glm::mat4 Pluto)
 {
-	glm::decompose(planet, Pscale, Protation, Ptranslation, Pskew, Pperspective);
 
-	if (translation.x >= Ptranslation.x-3 && translation.x <= Ptranslation.x+3 && translation.y >= Ptranslation.y - 3 && translation.y <= Ptranslation.y + 3 && translation.z >= Ptranslation.z - 3 && translation.z <= Ptranslation.z + 3)
+	angle += rotation;
+
+	glm::decompose(Sun, Pscale, Protation, Stranslation, Pskew, Pperspective);
+	glm::decompose(Mercury, Pscale, Protation, Metranslation, Pskew, Pperspective);
+	glm::decompose(Venus, Pscale, Protation, Vtranslation, Pskew, Pperspective);
+	glm::decompose(Earth, Pscale, Protation, Etranslation, Pskew, Pperspective);
+	glm::decompose(Mars, Pscale, Protation, Matranslation, Pskew, Pperspective);
+	glm::decompose(Jupiter, Pscale, Protation, Jtranslation, Pskew, Pperspective);
+	glm::decompose(Saturn, Pscale, Protation, Satranslation, Pskew, Pperspective);
+	glm::decompose(Uranus, Pscale, Protation, Utranslation, Pskew, Pperspective);
+	glm::decompose(Neptune, Pscale, Protation, Ntranslation, Pskew, Pperspective);
+	glm::decompose(Pluto, Pscale, Protation, Plutranslation, Pskew, Pperspective);
+
+	if (CollisionCheck(translation, Stranslation, rotation) == 1) {}
+	else if (CollisionCheck(translation, Metranslation, rotation) == 1) {}
+	else if (CollisionCheck(translation, Vtranslation, rotation) == 1) {}
+	else if (CollisionCheck(translation, Etranslation, rotation) == 1) {}
+	else if (CollisionCheck(translation, Matranslation, rotation) == 1) {}
+	else if (CollisionCheck(translation, Jtranslation, rotation) == 1){}
+	else if (CollisionCheck(translation, Satranslation, rotation) == 1) {}
+	else if (CollisionCheck(translation, Utranslation, rotation) == 1) {}
+	else if (CollisionCheck(translation, Ntranslation, rotation) == 1) {}
+	else if (CollisionCheck(translation, Plutranslation, rotation) == 1) {}
+
+	
+}
+
+bool Camera::CollisionCheck(glm::vec3 translation, glm::vec3 Ptranslation, float rotation)
+{
+	if (translation.x >= Ptranslation.x - 30 && translation.x <= Ptranslation.x + 30 && translation.y >= Ptranslation.y - 30 && translation.y <= Ptranslation.y + 30 && translation.z >= Ptranslation.z - 30 && translation.z <= Ptranslation.z + 30)
 	{
-		viewState = 1;
-	}
-	if (viewState == 1)
-	{
-		angle += rotation;
-		view = glm::lookAt(glm::vec3(cos(-speed[0] * angle) * 10 + Ptranslation.x, sin(-speed[2] * translation.z) * 10 + Ptranslation.y, sin(-speed[2] * angle) * 10 + Ptranslation.z), glm::vec3(0.0, 0.0, 0.0) + Ptranslation, glm::vec3(0.0, 1.0, 0.0));
+		colState = 1;
+		if (viewState == 1)
+			changeState = 1;
 	}
 	else
 	{
-		angle += rotation;
+		colState = 0;
+		changeState = 0;
+	}
+
+	if (changeState == 1)
+	{
+		view = glm::lookAt(glm::vec3(cos(-speed[0] * angle) * ((translation.y*3)+10) + Ptranslation.x, translation.y+5, sin(-speed[2] * angle) * ((translation.y * 3) + 10) + Ptranslation.z), glm::vec3(0.0, 0.0, 0.0) + Ptranslation, glm::vec3(0.0, 1.0, 0.0));
+		return 1;
+	}
+	else if (changeState == 0)
+	{
 		view = glm::lookAt(glm::vec3(cos(-speed[0] * angle) * dist[0] + translation.x, 0.2 + translation.y, sin(-speed[2] * angle) * dist[2] + translation.z), glm::vec3(0.0, 0.2, 0.0) + translation, glm::vec3(0.0, 1.0, 0.0));
+		return 0;
 	}
 }
 

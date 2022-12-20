@@ -18,6 +18,7 @@ public:
     void Render(GLint positionAttribLoc, GLint colorAttribLoc, GLint tcAttribLoc, GLint hasTex);
 
     void setSpeed(glm::vec3 spd) { m_speed = spd; };
+    void setTranslation(glm::vec3 pos) { model *= glm::translate(glm::mat4(1.0f), pos); }
     void setRotation(float rot) { angle = rot; };
     void setRoll(float rot) { roll = rot; };
     void setPitch(float rot) { pitch = rot; };

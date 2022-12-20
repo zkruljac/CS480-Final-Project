@@ -1,64 +1,89 @@
 ﻿  graphics.cpp
-C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(152,34): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(167,34): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(156,30): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(171,30): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(162,31): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(177,31): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(168,33): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(183,33): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(174,31): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(189,30): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(180,32): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(195,32): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(186,29): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(201,30): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(192,31): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(207,31): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(198,31): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(213,31): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(204,34): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(225,30): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(210,35): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(231,31): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(216,33): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(237,28): warning C4305: 'initializing': truncation from 'double' to '_Ty'
           with
           [
               _Ty=float
           ]
-C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(261,17): warning C4244: 'argument': conversion from 'double' to 'unsigned int', possible loss of data
-C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(284,33): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
+C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(243,34): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(251,31): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(257,35): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(263,33): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(269,35): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(330,17): warning C4244: 'argument': conversion from 'double' to 'unsigned int', possible loss of data
+C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\CS480 - Final Project\graphics.cpp(364,33): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
   CS480 - Final Project.vcxproj -> C:\Users\kknot\OneDrive\Documents\UNR Classes\CS 480\Semester Project\CS480-Final-Project\CS480 - Final Project\x64\Debug\CS480 - Final Project.exe
